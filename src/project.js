@@ -1,45 +1,66 @@
-const createTodo = (title, description, dueDate, priority) => {
-    return {
-        title,
-        description,
-        dueDate,
-        priority
-    }
-}
-
 const projectController = (() => {
-    let projects = [];
+  let projects = [];
 
-    // check localStorage for data
-    const checkData = () => {
-        // if(localStorage has something) projects = projects localStorage;
-        // else initiateData();
+  // check localStorage for data
+  const checkData = () => {
+    if (localStorage.getItem("projects")) {
+      const storageProjects = JSON.parse(localStorage.getItem("projects"));
+      projects = storageProjects;
+    } else {
+      initiateData();
     }
-    
-    const storeData = () => {
-        
-    }
+  };
 
-    // initiate default data
-    const initiateData = () => {
-        projects.push(createProject("Default project"));
-    }
+  // initiate default data
+  const initiateData = () => {
+    projects.push(createProject("Default project"));
+  };
 
-    const createProject = (title) => {
-        let lists = [];
-    
-        return {
-            title,
-            lists     
-        }
-    }
+  // store data in localStorage
+  const storeData = () => {
+    localStorage.setItem("projects", JSON.stringify(projects));
+  };
 
-    const modifyProject = (index, title) => {
-        projects[index].title = title;
-    }
+  const createProject = (title) => {
+    let lists = [];
+    return {
+      title,
+      lists,
+    };
+  };
 
-    const removeProject = (index) => {
-        projects.splice(index, 1);
-    }
+  const modifyProject = (index, title) => {
+    projects[index].title = title;
+  };
 
+  const removeProject = (index) => {
+    projects.splice(index, 1);
+  };
+
+  const createTodo = (title, description, dueDate, priority) => {
+    return {
+      title,
+      description,
+      dueDate,
+      priority,
+    };
+  };
+
+  const modifyTodo = (todo, attribute, newValue) => {
+    todo[attribute] = newValue;
+  };
+
+  const removeTodo = (projectIndex, todoIndex) => {
+    projects[projectIndex].splice(todoIndex, 1);
+  };
+
+  return {
+    projects,
+    createProject,
+    modifyProject,
+    removeProject,
+    createTodo,
+    modifyTodo,
+    removeTodo,
+  };
 })();
