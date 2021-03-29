@@ -1,4 +1,4 @@
-const todoFactory = (title, description, dueDate, priority) => {
+const createTodo = (title, description, dueDate, priority) => {
     return {
         title,
         description,
@@ -6,3 +6,13 @@ const todoFactory = (title, description, dueDate, priority) => {
         priority
     }
 }
+
+const createProject = (title) => {
+    let lists = [];
+
+    return {
+        title,
+        lists     
+    }
+}
+
