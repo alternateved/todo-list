@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=PT+Sans&display=swap');
+
 #content {
   display: grid;
   grid-template-areas:
@@ -5,12 +7,14 @@
     "nav main main"
     "nav main main"
     "footer main main";
-  grid-template-rows: 80px 1fr 1fr 70px;
-  grid-template-columns: 20% 1fr 15%;
-  grid-row-gap: 10px;
-  grid-column-gap: 10px;
-  height: 100vh;
+  grid-template-rows: 80px 1fr 1fr 60px;
+  grid-template-columns: 20% 1fr 1fr;
+  grid-gap: 10px;
+  height: 98vh;
   margin: 0;
+  font-family: 'PT Sans', sans-serif;
+  font-size: calc(0.8rem + 0.5vw);
+  line-height: calc(1.1rem + 0.5vw);
 }
 header,
 footer,
@@ -23,13 +27,21 @@ nav {
 header {
   grid-area: header;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
   align-items: center;
+  font-size: calc(0.8rem + 0.6vw);
 }
 nav {
   grid-area: nav;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
 }
-main {
+nav > * {
+  padding: 1rem;
+}
+  main {
   grid-area: main;
 }
 footer {
@@ -53,10 +65,15 @@ footer a {
       "main"
       "main"
       "footer";
-    grid-template-rows: 80px 1fr 1fr 1fr 60px;
+    grid-template-rows: 170px 1fr 1fr 1fr 60px;
     grid-template-columns: 1fr;
   }
   header {
       flex-direction: column;
+      justify-content: space-around;
+  }
+  nav {
+    flex-direction: row;
+    justify-content: space-around;
   }
 }

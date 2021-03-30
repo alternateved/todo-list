@@ -1,33 +1,50 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Todo list</title>
+    <title>same.do</title>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon" />
+    <link
+      rel="stylesheet"
+      href="../node_modules/@fortawesome/fontawesome-free/css/all.css"
+    />
     <link rel="stylesheet" href="styles/styles.css" />
   </head>
   <body>
     <div id="content">
       <header>
-        <div class="logo">LOGO</div>
+        <div class="logo">
+          <h1><span class="fas fa-check-circle"> same.do</span></h1>
+        </div>
         <div class="search-bar">SEARCH</div>
+        <div></div>
       </header>
 
       <nav>
-        <div><strong>Shortcuts</strong></div>
-        <div>Today</div>
-        <div>Next 7 Days</div>
-        <div>All tasks</div>
+        <div class="list-container">
+          <div class="list-title"><strong>Shortcuts</strong></div>
 
-        <div><strong>Projects</strong></div>
-        <div>Something A</div>
-        <div>Something B</div>
-        <div>Something C</div>
+          <div class="list">
+            <div>Today</div>
+            <div>Next 7 Days</div>
+            <div>All tasks</div>
+          </div>
+        </div>
+
+        <div class="list-container">
+          <div class="list-title"><strong>Projects</strong></div>
+
+          <div class="list">
+            <div>Something A</div>
+            <div>Something B</div>
+            <div>Something C</div>
+          </div>
+        </div>
       </nav>
 
-      <main>
-      </main>
+      <main></main>
 
       <footer>
         <p>
