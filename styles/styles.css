@@ -1,5 +1,19 @@
-@import url('https://fonts.googleapis.com/css2?family=PT+Sans&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=PT+Sans&display=swap");
 
+:root {
+  --primary-color: linear-gradient(to right, #0083b0, #00b4db);
+  --icon: #00b4db;
+  --link: white;
+  --primary-white: white;
+  --primary-black: black;
+  --secondary-color: slategray;
+}
+:root.dark-mode {
+  --primary-color: beige;
+  --primary-white: black;
+  --primary-black: lightgray;
+  --secondary-color: beige;
+}
 #content {
   display: grid;
   grid-template-areas:
@@ -8,13 +22,14 @@
     "nav main main"
     "footer main main";
   grid-template-rows: 80px 1fr 1fr 60px;
-  grid-template-columns: 20% 1fr 1fr;
+  grid-template-columns: 30vh 1fr 1fr;
   grid-gap: 10px;
   height: 98vh;
   margin: 0;
-  font-family: 'PT Sans', sans-serif;
+  font-family: "PT Sans", sans-serif;
   font-size: calc(0.7rem + 0.5vw);
   line-height: calc(1.1rem + 0.5vw);
+  color: var(--primary-white);
 }
 header,
 footer,
@@ -22,16 +37,19 @@ main,
 nav {
   padding: 1rem;
   border-radius: 20px;
-  background: lightskyblue;
+  background: var(--primary-color);
 }
 header {
   grid-area: header;
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: center;
   font-size: calc(0.9rem + 0.3vw);
 }
 .fas {
+  padding-right: 0.5rem;
+}
+.far {
   padding-right: 0.5rem;
 }
 .logo {
@@ -49,33 +67,43 @@ header {
 }
 .searchTerm {
   width: 100%;
-  border: 3px solid black;
+  border: 3px solid var(--primary-white);
   border-right: none;
   padding: 5px;
   height: 20px;
   border-radius: 10px 0 0 10px;
   outline: none;
-  color: gray;
+  color: var(--primary-white);
+  background: var(--primary-color);
 }
-.searchTerm:focus{
-  color: lightskyblue;
+.searchTerm:focus {
+  color: white;
 }
 .searchButton {
   width: 40px;
   height: 36px;
-  border: 1px solid black;
-  background: black;
+  border: 1px solid var(--primary-white);
+  background: var(--primary-white);
   text-align: center;
-  color: #fff;
+  color: var(--icon);
   border-radius: 0 10px 10px 0;
   cursor: pointer;
   font-size: 20px;
 }
 .wrap {
-  width: 35%;
+  width: 80%;
+  padding-top: 1rem;
+  padding-bottom: 2rem;
 }
 nav {
   grid-area: nav;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: auto;
+  font-size: calc(1rem + 0.2vw);
+}
+.navigation {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -90,8 +118,33 @@ nav {
 .list > * {
   padding: 0.1rem;
 }
-  main {
+main {
   grid-area: main;
+  overflow: auto;
+}
+.tasks-container {
+  padding: 0.5rem;
+  margin: 0 15vw;
+}
+.tasks-header {
+  display: flex;
+  align-self: center;
+  justify-content: space-between;
+  padding-bottom: 1rem;
+  margin: 0 1rem;
+}
+.tasks > * {
+  margin: 0.5rem;
+}
+.task {
+  border: solid 1px var(--primary-white);
+  border-radius: 20px;
+  display: flex;
+  justify-content: space-between;
+  padding: 0.4rem;
+}
+.task .fa-edit {
+  padding-left: 1rem;
 }
 footer {
   grid-area: footer;
@@ -99,11 +152,10 @@ footer {
   justify-content: center;
   align-items: center;
   font-size: calc(0.6rem + 0.5vw);
-  color: black;
 }
 footer a {
   text-decoration: none;
-  color: black;
+  color: var(--link);
 }
 /* Stack the layout on small devices/viewports. */
 @media all and (max-width: 575px) {
@@ -114,15 +166,24 @@ footer a {
       "main"
       "main"
       "footer";
-    grid-template-rows: 170px 1fr 1fr 1fr 60px;
+    grid-template-rows: 100px 1fr 1fr 1fr 60px;
     grid-template-columns: 1fr;
   }
   header {
-      flex-direction: column;
-      justify-content: space-around;
-  }
-  nav {
     flex-direction: row;
     justify-content: space-around;
+  }
+  .wrap {
+    display: none;
+    width: 60%;
+    padding-top: 0.5rem;
+    padding-bottom: 1rem;
+  }
+  .navigation {
+    flex-direction: row;
+    justify-content: center;
+  }
+  .tasks-container {
+    margin: 0 5vw;
   }
 }
