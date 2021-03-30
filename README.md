@@ -10,7 +10,7 @@ Implementation of simple todo list from [The Odin Project](https://www.theodinpr
 
 
 ### **Side notes**
-
+* Learned how to use Font Awesome Icons
 
 ### **Tools:**
 * Visual Studio Code
