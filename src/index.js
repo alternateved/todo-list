@@ -2,14 +2,15 @@ console.log("I am here");
 
 
 /* 
-- Create animation of striking in CSS/JavaScript
-- Add functionality to query tasks
-- Add functionality to segregate task by Today/7day/All
-- Create logo for page
-- Display dynamically task in main tag
-- Find a way to "expand" tasks
-- Establish color palette
-- Make page responsive
-- Properly display elements of the page with CSS
-- Dynamically create page's content
+- add functionality to query tasks
+- add functionality to segregate task by Today/7day/All
+- create animation of striking in CSS/JavaScript
+- create modal for submitting new task
+X create logo for page
+- display dynamically task in main tag
+- find a way to "expand" tasks
+- establish color palette
+- make page responsive
+- properly display elements of the page with CSS
+- dynamically create page's content
 */
