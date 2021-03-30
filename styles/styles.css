@@ -13,7 +13,7 @@
   height: 98vh;
   margin: 0;
   font-family: 'PT Sans', sans-serif;
-  font-size: calc(0.8rem + 0.5vw);
+  font-size: calc(0.7rem + 0.5vw);
   line-height: calc(1.1rem + 0.5vw);
 }
 header,
@@ -29,17 +29,34 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-size: calc(0.8rem + 0.6vw);
+  font-size: calc(0.9rem + 0.3vw);
+}
+.fas {
+  padding-right: 0.5rem;
+}
+.logo {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+.logo > * {
+  padding: 0.3rem;
 }
 nav {
   grid-area: nav;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
   justify-content: flex-start;
 }
-nav > * {
+.list-container {
+  padding: 0.5rem;
+}
+.list {
   padding: 1rem;
+}
+.list > * {
+  padding: 0.1rem;
 }
   main {
   grid-area: main;
