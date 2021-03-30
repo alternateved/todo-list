@@ -22,4 +22,4 @@ Implementation of simple todo list from [The Odin Project](https://www.theodinpr
 
 ### **Third party code:**
 * [Google Fonts](https://fonts.google.com/)
-* [Font Awesome](https://fontawesome.com/)
+* [Font Awesome Icons](https://fontawesome.com/)
