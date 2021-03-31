@@ -42,7 +42,7 @@ nav {
 header {
   grid-area: header;
   display: flex;
-  justify-content: flex-start;
+  justify-content: space-between;
   align-items: center;
   font-size: calc(0.9rem + 0.3vw);
 }
@@ -59,6 +59,9 @@ header {
 }
 .logo > * {
   padding: 0.3rem;
+}
+.fa-adjust {
+  cursor: pointer;
 }
 .search {
   width: 100%;
@@ -100,8 +103,8 @@ nav {
   display: flex;
   flex-direction: column;
   align-items: center;
-  overflow: auto;
   font-size: calc(1rem + 0.2vw);
+  overflow: auto;
 }
 .navigation {
   display: flex;
@@ -115,12 +118,20 @@ nav {
 .list-title {
   font-weight: bold;
 }
-.list {
+.list-shortcuts {
   padding: 1rem;
 }
-.list-element{
+.list-projects {
+  height: 100px;
+  overflow: auto;
+  padding: 1rem;
+}
+.list-element {
   cursor: pointer;
   padding: 0.1rem;
+}
+.list-element:hover {
+  transform: scale(1.1);
 }
 .button-container {
   padding: 1rem;;
@@ -172,19 +183,16 @@ main {
   padding-left: 1rem;
 }
 .add-task {
-  border: 1px solid rgba(255, 255, 255, 0.5);
-  -webkit-background-clip: padding-box; /* for Safari */
-  background-clip: padding-box; /* for IE9+, Firefox 4+, Opera, Chrome */
-  color:rgba(255, 255, 255, 0.5);
+  border: 1px solid var(--primary-white);
   border-radius: 20px;
   display: flex;
   justify-content: flex-start;
   padding: 0.4rem;
   cursor: pointer;
+  opacity: 0.5;
 }
 .add-task:hover {
-  border: 1px solid rgb(255, 255, 255);
-  color: rgb(255, 255, 255);
+  opacity: 1;
 }
 footer {
   grid-area: footer;
@@ -208,6 +216,7 @@ footer a {
       "footer";
     grid-template-rows: 100px 1fr 1fr 1fr 60px;
     grid-template-columns: 1fr;
+    height: auto;
   }
   header {
     flex-direction: row;
