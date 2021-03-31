@@ -112,11 +112,33 @@ nav {
 .list-container {
   padding: 0.5rem;
 }
+.list-title {
+  font-weight: bold;
+}
 .list {
   padding: 1rem;
 }
-.list > * {
+.list-element{
+  cursor: pointer;
   padding: 0.1rem;
+}
+.button-container {
+  padding: 1rem;;
+}
+#add-project {
+  border: 2px solid var(--primary-white);
+  background-color: var(--primary-color);
+  border-radius: 15px;
+  color: black;
+  padding: 12px 28px;
+  font-size: 16px;
+  cursor: pointer;
+  color: var(--primary-white);
+}
+#add-project:hover {
+  background: var(--primary-white);
+  color: var(--icon);
+  font-weight: bolder;
 }
 main {
   grid-area: main;
@@ -132,6 +154,8 @@ main {
   justify-content: space-between;
   padding-bottom: 1rem;
   margin: 0 1rem;
+  font-weight: bold;
+  font-size: calc(1rem + 0.2vw);
 }
 .tasks > * {
   margin: 0.5rem;
@@ -142,9 +166,25 @@ main {
   display: flex;
   justify-content: space-between;
   padding: 0.4rem;
+  cursor: pointer;
 }
 .task .fa-edit {
   padding-left: 1rem;
+}
+.add-task {
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  -webkit-background-clip: padding-box; /* for Safari */
+  background-clip: padding-box; /* for IE9+, Firefox 4+, Opera, Chrome */
+  color:rgba(255, 255, 255, 0.5);
+  border-radius: 20px;
+  display: flex;
+  justify-content: flex-start;
+  padding: 0.4rem;
+  cursor: pointer;
+}
+.add-task:hover {
+  border: 1px solid rgb(255, 255, 255);
+  color: rgb(255, 255, 255);
 }
 footer {
   grid-area: footer;
