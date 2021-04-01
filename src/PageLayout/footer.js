@@ -8,6 +8,7 @@ function createFooter() {
     footer.appendChild(para);
   
     const link = createDOM("a");
+
     link.textContent = "alternateved ∆";
     link.href = "https://github.com/alternateved";
     link.target = "_blank";
@@ -15,3 +16,5 @@ function createFooter() {
   
     return footer;
   }
+
+  export default createFooter;

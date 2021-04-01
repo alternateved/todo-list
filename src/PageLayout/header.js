@@ -20,3 +20,5 @@ function createHeader() {
   
     return header;
   }
+
+  export default createHeader;
