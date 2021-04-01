@@ -115,16 +115,13 @@ nav {
 .list-container {
   padding: 0.5rem;
 }
-.list-title {
-  font-weight: bold;
-}
 .list-shortcuts {
-  padding: 1rem;
+  padding: 0.5rem;
 }
 .list-projects {
   height: 100px;
   overflow: auto;
-  padding: 1rem;
+  padding: 0.5rem;
 }
 .list-element {
   cursor: pointer;
@@ -134,7 +131,7 @@ nav {
   transform: scale(1.1);
 }
 .button-container {
-  padding: 1rem;;
+  padding: 1rem;
 }
 #add-project {
   border: 2px solid var(--primary-white);
