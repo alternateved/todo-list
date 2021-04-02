@@ -98,7 +98,8 @@ function createNav() {
   const projectBox = createDOM("div", "project-box", "hidden");
   nav.appendChild(projectBox);
 
-  const inputProjectName = createDOM("input", "project-name");
+  const inputProjectName = createDOM("input");
+  inputProjectName.id = "project-name";
   inputProjectName.type = "text";
   inputProjectName.placeholder = "Project name";
   projectBox.appendChild(inputProjectName);

@@ -26,7 +26,8 @@ function createMain() {
   const tasksDiv = createDOM("div", "tasks");
   tasksContainer.appendChild(tasksDiv);
 
-  const addTaskDiv = createDOM("div", "add-task");
+  const addTaskDiv = createDOM("div");
+  addTaskDiv.id = "add-task";
   tasksDiv.appendChild(addTaskDiv);
 
   const addTaskPanel = createDOM("div", "panel");
