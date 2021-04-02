@@ -7,7 +7,7 @@ renderStaticPage(content);
 X create logo for page
 - display dynamically task in main tag
 - make page responsive
-- dynamically create page's content
+X dynamically create page's content
 - properly display elements of the page with CSS
 - add functionality to query tasks
 - add functionality to segregate task by Today/7day/All

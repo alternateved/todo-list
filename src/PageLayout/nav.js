@@ -38,7 +38,7 @@ function createNav() {
   shortcutsTitleDiv.appendChild(shortcutsTitle);
 
   const shortcutsListDiv = createDOM("div", "list-shortcuts");
-  navigationDiv.appendChild(shortcutsListDiv);
+  shortcutsContainer.appendChild(shortcutsListDiv);
 
   for (let i = 0; i < 3; i++) {
     const listElement = createDOM("div", "list-element");
@@ -85,7 +85,7 @@ function createNav() {
   projectsTitleDiv.appendChild(projectsTitle);
 
   const projectsListDiv = createDOM("div", "list-projects");
-  navigationDiv.appendChild(projectsListDiv);
+  projectsContainer.appendChild(projectsListDiv);
 
   const addProjectButtonDiv = createDOM("div", "button-container");
   nav.appendChild(addProjectButtonDiv);
