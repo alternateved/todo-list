@@ -13,7 +13,9 @@ function createHeader() {
     title.textContent = "same.do";
     logoContainer.appendChild(title);
   
-    const themeSwitcherDiv = createDOM("div", "theme-switcher");
+    const themeSwitcherDiv = createDOM("div");
+    themeSwitcherDiv.id = "theme-switcher";
+    
     const themeSwitcher = createDOM("span", "fas", "fa-adjust", "fa-lg");
     themeSwitcherDiv.appendChild(themeSwitcher);
     header.appendChild(themeSwitcherDiv);

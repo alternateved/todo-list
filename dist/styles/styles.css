@@ -126,6 +126,7 @@ nav {
 .list-element {
   cursor: pointer;
   padding: 0.1rem;
+  transition: all 0.1s linear;
 }
 .list-element:hover {
   transform: scale(1.1);
@@ -137,16 +138,68 @@ nav {
   border: 2px solid var(--primary-white);
   background-color: var(--primary-color);
   border-radius: 15px;
-  color: black;
-  padding: 12px 28px;
-  font-size: 16px;
+  padding: 8px 25px;
   cursor: pointer;
   color: var(--primary-white);
+  transition: all 0.2s linear;
 }
 #add-project:hover {
   background: var(--primary-white);
   color: var(--icon);
   font-weight: bolder;
+}
+.project-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+#project-name {
+  width: 90%;
+  border: 3px solid var(--primary-white);
+  padding: 5px;
+  height: 20px;
+  border-radius: 10px;
+  outline: none;
+  color: var(--primary-white);
+  background: var(--primary-color);
+}
+.project-box:focus {
+  color: var(--primary-white);
+}
+.project-box-buttons {
+  padding-top: 0.7rem;
+}
+#add-project-box {
+  border: 2px solid var(--primary-white);
+  background-color: var(--primary-color);
+  border-radius: 15px;
+  padding: 8px 25px;
+  cursor: pointer;
+  color: var(--primary-white);
+  transition: all 0.2s linear;
+}
+#add-project-box:hover {
+  background: var(--primary-white);
+  color: var(--icon);
+  font-weight: bolder;
+}
+#cancel-project-box {
+  border: 2px solid var(--primary-white);
+  background-color: var(--primary-white);
+  border-radius: 15px;
+  color: black;
+  padding: 8px 25px;
+  cursor: pointer;
+  color: var(--icon);
+  transition: all 0.2s linear;
+}
+#cancel-project-box:hover {
+  background: var(--primary-color);
+  color: var(--primary-white);
+  font-weight: bolder;
+}
+.hidden {
+  display: none;
 }
 main {
   grid-area: main;
@@ -174,22 +227,30 @@ main {
   display: flex;
   justify-content: space-between;
   padding: 0.4rem;
+  font-size: calc(0.7rem + 0.3vw);
   cursor: pointer;
+  transition: all 0.1s linear;
+}
+.task:hover {
+  transform: scale(1.05);
 }
 .task .fa-edit {
   padding-left: 1rem;
 }
-.add-task {
+#add-task {
   border: 1px solid var(--primary-white);
   border-radius: 20px;
   display: flex;
   justify-content: flex-start;
   padding: 0.4rem;
+  font-size: calc(0.7rem + 0.3vw);
   cursor: pointer;
+  transition: all 0.1s linear;
   opacity: 0.5;
 }
-.add-task:hover {
+#add-task:hover {
   opacity: 1;
+  transform: scale(1.05);
 }
 footer {
   grid-area: footer;
@@ -230,6 +291,6 @@ footer a {
     justify-content: center;
   }
   .tasks-container {
-    margin: 0 5vw;
+    margin: 0;
   }
 }

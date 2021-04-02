@@ -1,7 +1,7 @@
-import renderStaticPage from "./PageLayout/static-page";
+import renderStaticPage from "./staticPage/static-page";
 
-const content = document.querySelector("#content");
-renderStaticPage(content);
+//const content = document.querySelector("#content");
+//renderStaticPage(content);
 
 /* 
 X create logo for page

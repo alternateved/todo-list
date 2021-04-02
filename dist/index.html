@@ -14,7 +14,47 @@
   </head>
   <body>
     <div id="content">
-<!--           <div class="list-container">
+      <header>
+        <div class="logo">
+          <span class="fas fa-check-circle fa-2x"></span>
+          <h1>same.do</h1>
+        </div>
+        <div id="theme-switcher">
+          <span class="fas fa-adjust fa-lg"></span>
+        </div>
+      </header>
+
+      <nav>
+        <div class="wrap">
+          <div class="search">
+            <input type="text" class="searchTerm" placeholder="Search..." />
+            <button type="submit" class="searchButton">
+              <span class="fa fa-search"></span>
+            </button>
+          </div>
+        </div>
+
+        <div class="navigation">
+          <div class="list-container">
+            <div class="list-title">
+              <h3>Shortcuts</h3>
+            </div>
+
+            <div class="list-shortcuts">
+              <div class="list-element">
+                <span class="fas fa-calendar-day"></span><span>Today</span>
+              </div>
+              <div class="list-element">
+                <span class="fas fa-calendar-week"></span
+                ><span>Next 7 Days</span>
+              </div>
+              <div class="list-element">
+                <span class="fas fa-calendar"></span><span>All tasks</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="list-container">
             <div class="list-title">
               <h3>Projects</h3>
             </div>
@@ -32,9 +72,23 @@
               </div>
             </div>
           </div>
-        </div> -->
+        </div>
 
- <!--      <main>
+        <div class="project-box">
+          <input id="project-name" type="text" placeholder="Project name">
+          <div class="project-box-buttons">
+            <button id="add-project-box">Add</button>
+            <button id="cancel-project-box">Cancel</button>
+          </div>
+        
+        </div>
+
+        <div class="button-container">
+          <button id="add-project">Add project</button>
+        </div>
+      </nav>
+
+      <main>
         <div class="tasks-container">
           <div class="tasks-header">
             <div class="tasks-title">Title</div>
@@ -43,8 +97,8 @@
             </div>
           </div>
 
-           <div class="tasks">
-           <div class="task">
+          <div class="tasks">
+            <div class="task">
               <div class="left-task-panel">
                 <span class="far fa-circle"></span>Task title 1
               </div>
@@ -124,7 +178,25 @@
                 16/03/2021<span class="fas fa-edit"></span
                 ><span class="fas fa-trash"></span>
               </div>
-            </div> -->
+            </div>
+            <div id="add-task">
+              <div class="panel">
+                <span class="fas fa-plus-circle"></span><span>Add task</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+
+      <footer>
+        <p>
+          made by
+          <a href="https://github.com/alternateved" target="”_blank”"
+            >alternateved ∆</a
+          >
+        </p>
+      </footer>
+    </div>
     <script src="main.js"></script>
   </body>
 </html>

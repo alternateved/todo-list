@@ -95,6 +95,27 @@ function createNav() {
   addProjectButton.textContent = "Add project";
   addProjectButtonDiv.appendChild(addProjectButton);
 
+  const projectBox = createDOM("div", "project-box", "hidden");
+  nav.appendChild(projectBox);
+
+  const inputProjectName = createDOM("input", "project-name");
+  inputProjectName.type = "text";
+  inputProjectName.placeholder = "Project name";
+  projectBox.appendChild(inputProjectName);
+
+  const projectBoxButtons = createDOM("div", "project-box-buttons");
+  projectBox.appendChild(projectBoxButtons);
+
+  const addButton = createDOM("button");
+  addButton.id = "add-project-box"
+  addButton.textContent = "Add";
+  projectBoxButtons.appendChild(addButton);
+
+  const cancelButton = createDOM("button");
+  cancelButton.id = "cancel-project-box"
+  cancelButton.textContent = "Cancel";
+  projectBoxButtons.appendChild(cancelButton);
+
   return nav;
 }
 
