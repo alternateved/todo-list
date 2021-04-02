@@ -1,5 +1,7 @@
-console.log("I am here");
+import renderStaticPage from "./PageLayout/static-page";
 
+const content = document.querySelector("#content");
+renderStaticPage(content);
 
 /* 
 X create logo for page

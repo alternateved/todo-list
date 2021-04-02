@@ -35,7 +35,7 @@ function createMain() {
   const addTaskIcon = createDOM("span", "fas", "fa-plus-circle");
   addTaskPanel.appendChild(addTaskIcon);
 
-  const addTaskText = createDom("span");
+  const addTaskText = createDOM("span");
   addTaskText.textContent = "Add task";
   addTaskPanel.appendChild(addTaskText);
 
