@@ -63,6 +63,14 @@ header {
 .fa-adjust {
   cursor: pointer;
 }
+nav {
+  grid-area: nav;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: calc(1rem + 0.2vw);
+  overflow: auto;
+}
 .search {
   width: 100%;
   position: relative;
@@ -98,14 +106,6 @@ header {
   padding-top: 1rem;
   padding-bottom: 2rem;
 }
-nav {
-  grid-area: nav;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  font-size: calc(1rem + 0.2vw);
-  overflow: auto;
-}
 .navigation {
   display: flex;
   flex-direction: column;
@@ -133,15 +133,15 @@ nav {
 }
 #add-project {
   border: 2px solid var(--primary-white);
-  background-color: var(--primary-color);
+  background-color: var(--primary-white);
   border-radius: 15px;
   padding: 8px 25px;
   cursor: pointer;
-  color: var(--primary-white);
+  color: var(--icon);
   transition: all 0.2s linear;
 }
 #add-project:hover {
-  background: var(--primary-white);
+  background: var(--primary-color);
   color: var(--icon);
   font-weight: bolder;
 }
@@ -169,6 +169,20 @@ nav {
 #add-project-box {
   margin-right: 0.7rem;
   border: 2px solid var(--primary-white);
+  background-color: var(--primary-white);
+  border-radius: 15px;
+  padding: 8px 25px;
+  cursor: pointer;
+  color: var(--icon);
+  transition: all 0.2s linear;
+}
+#add-project-box:hover {
+  background: var(--primary-color);
+  color: var(--primary-white);
+  font-weight: bolder;
+}
+#cancel-project-box {
+  border: 2px solid var(--primary-white);
   background-color: var(--primary-color);
   border-radius: 15px;
   padding: 8px 25px;
@@ -176,24 +190,9 @@ nav {
   color: var(--primary-white);
   transition: all 0.2s linear;
 }
-#add-project-box:hover {
-  background: var(--primary-white);
-  color: var(--icon);
-  font-weight: bolder;
-}
-#cancel-project-box {
-  border: 2px solid var(--primary-white);
-  background-color: var(--primary-white);
-  border-radius: 15px;
-  color: black;
-  padding: 8px 25px;
-  cursor: pointer;
-  color: var(--icon);
-  transition: all 0.2s linear;
-}
 #cancel-project-box:hover {
   background: var(--primary-color);
-  color: var(--primary-white);
+  
   font-weight: bolder;
 }
 .hidden {
@@ -261,6 +260,100 @@ footer a {
   text-decoration: none;
   color: var(--link);
 }
+.task-box {
+  background-color: rgba(0, 0, 0, 0.3);
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+.task-box-title {
+  text-align: center;
+}
+.task-box-container {
+  border: 3px solid var(--primary-white);
+  background: var(--primary-color);
+  padding: 0rem 3rem;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+}
+.task-box-container > * {
+  padding: 0.5rem;
+}
+.input-element {
+  width: 90%;
+  border: 3px solid var(--primary-white);
+  padding: 5px;
+  height: 20px;
+  border-radius: 10px;
+  outline: none;
+  color: var(--primary-white);
+  background: var(--primary-color);
+}
+#task-description {
+  width: 90%;
+  border: 3px solid var(--primary-white);
+  padding: 5px;
+  height: 100px;
+  border-radius: 10px;
+  outline: none;
+  color: var(--primary-white);
+  background: var(--primary-color);
+  resize: vertical;
+}
+.task-box-priority {
+  padding-top: 1rem;
+  display: flex;
+  justify-content: space-between;
+  margin-right: 0.8rem;
+}
+#task-priority {
+  border: 3px solid var(--primary-white);
+  appearance: none;
+  height: 35px;
+  width: 40%;
+  text-align:center; 
+  border-radius: 10px;
+  color: var(--primary-white);
+  background: var(--primary-color);
+}
+.task-box-buttons {
+  padding: 2rem;
+  align-self: center;
+}
+#add-task-box {
+  border: 2px solid var(--primary-white);
+  background-color: var(--primary-white);
+  border-radius: 15px;
+  padding: 8px 25px;
+  cursor: pointer;
+  color: var(--icon);
+  transition: all 0.2s linear;
+}
+#add-task-box:hover {
+  background: var(--primary-color);
+  color: var(--primary-white);
+  font-weight: bolder;
+}
+#cancel-task-box {
+  border: 2px solid var(--primary-white);
+  background-color: var(--primary-color);
+  border-radius: 15px;
+  padding: 8px 25px;
+  cursor: pointer;
+  color: var(--primary-white);
+  transition: all 0.2s linear;
+}
+#cancel-task-box:hover {
+  background: var(--primary-color);
+  font-weight: bolder;
+}
 /* Stack the layout on small devices/viewports. */
 @media all and (max-width: 575px) {
   #content {
@@ -291,4 +384,10 @@ footer a {
   .tasks-container {
     margin: 0;
   }
+  .task-box {
+    background-color: rgba(0, 0, 0, 0.0);
+  }
+  .task-box-container {
+    border: 3px solid var(--primary-white);
+    padding: 0rem 2rem;
 }
