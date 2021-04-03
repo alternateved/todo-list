@@ -131,9 +131,6 @@ nav {
 .list-element:hover {
   transform: scale(1.1);
 }
-.button-container {
-  padding: 1rem;
-}
 #add-project {
   border: 2px solid var(--primary-white);
   background-color: var(--primary-color);
@@ -170,6 +167,7 @@ nav {
   padding-top: 0.7rem;
 }
 #add-project-box {
+  margin-right: 0.7rem;
   border: 2px solid var(--primary-white);
   background-color: var(--primary-color);
   border-radius: 15px;
