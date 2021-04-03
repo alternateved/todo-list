@@ -192,11 +192,8 @@ nav {
 }
 #cancel-project-box:hover {
   background: var(--primary-color);
-  
+
   font-weight: bolder;
-}
-.hidden {
-  display: none;
 }
 main {
   grid-area: main;
@@ -318,7 +315,7 @@ footer a {
   appearance: none;
   height: 35px;
   width: 40%;
-  text-align:center; 
+  text-align: center;
   border-radius: 10px;
   color: var(--primary-white);
   background: var(--primary-color);
@@ -354,6 +351,9 @@ footer a {
   background: var(--primary-color);
   font-weight: bolder;
 }
+.hidden {
+  display: none !important;
+}
 /* Stack the layout on small devices/viewports. */
 @media all and (max-width: 575px) {
   #content {
@@ -385,9 +385,10 @@ footer a {
     margin: 0;
   }
   .task-box {
-    background-color: rgba(0, 0, 0, 0.0);
+    background-color: rgba(0, 0, 0, 0);
   }
   .task-box-container {
     border: 3px solid var(--primary-white);
     padding: 0rem 2rem;
+  }
 }
