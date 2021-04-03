@@ -2,7 +2,7 @@ import renderStaticPage from "./staticPage/static-page";
 import startListening from "./dynamicPage/event-listeners";
 
 const content = document.querySelector("#content");
-//renderStaticPage(content);
+renderStaticPage(content);
 //startListening();
 
 
