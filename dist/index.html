@@ -14,7 +14,7 @@
   </head>
   <body>
     <div id="content">
-     <!--  <header>
+      <header>
         <div class="logo">
           <span class="fas fa-check-circle fa-2x"></span>
           <h1>same.do</h1>
@@ -196,7 +196,41 @@
           >
         </p>
       </footer>
-    </div> -->
+      <div class="task-box">
+        <div class="task-box-container">
+          <h3 class="task-box-title">New Task</h3>
+            <div class="task-box-input">
+              <label>Title</label>
+              <input id="task-title" class="input-element" type="text" placeholder="Task title">
+            </div>
+            <div class="task-box-input">
+              <label>Description</label>
+              <textarea id="task-description" placeholder="Full description..."></textarea>
+            </div>
+            <div class="task-box-input">
+              <label>Due date</label>
+              <input id="task-date" class="input-element" type="date" placeholder="">
+            </div>
+            <div class="task-box-priority">            
+              <label>Priority</label>
+              <select id="task-priority">
+                  <option value="low" selected="">Low</option>
+                  <option value="medium">Medium</option>
+                  <option value="high">High</option>
+              </select>
+            </div>
+            
+            <div class="task-box-buttons">
+              <button id="add-task-box">Add task</button>
+              <button id="cancel-task-box">Cancel</button>
+            </div>
+  
+          
+          </div>
+        </div>
+      </div>
+    </div>
+
     <script src="main.js"></script>
   </body>
 </html>

@@ -2,8 +2,8 @@ import renderStaticPage from "./staticPage/static-page";
 import startListening from "./dynamicPage/event-listeners";
 
 const content = document.querySelector("#content");
-renderStaticPage(content);
-startListening();
+//renderStaticPage(content);
+//startListening();
 
 
 /* 
@@ -15,8 +15,8 @@ X dynamically create page's content
 - add functionality to query tasks
 - add functionality to segregate task by Today/7day/All
 - create animation of striking in CSS/JavaScript
-- create dialog box to add new project
-- create animation to expand box to add new task  
+X create dialog box to add new project
+- create animation to show task modal box to add new task  
 - find a way to "expand" tasks for details
 - establish color palette
 */
