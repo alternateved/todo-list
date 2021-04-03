@@ -3,7 +3,7 @@ import startListening from "./dynamicPage/event-listeners";
 
 const content = document.querySelector("#content");
 renderStaticPage(content);
-//startListening();
+startListening();
 
 
 /* 

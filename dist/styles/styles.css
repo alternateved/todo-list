@@ -142,7 +142,7 @@ nav {
 }
 #add-project:hover {
   background: var(--primary-color);
-  color: var(--icon);
+  color: var(--primary-white);
   font-weight: bolder;
 }
 .project-box {
@@ -281,7 +281,7 @@ footer a {
   flex-direction: column;
 }
 .task-box-container > * {
-  padding: 0.5rem;
+  padding: 1rem;
 }
 .input-element {
   width: 90%;
@@ -325,6 +325,7 @@ footer a {
   align-self: center;
 }
 #add-task-box {
+  margin-right: 0.7rem;
   border: 2px solid var(--primary-white);
   background-color: var(--primary-white);
   border-radius: 15px;
@@ -352,7 +353,7 @@ footer a {
   font-weight: bolder;
 }
 .hidden {
-  display: none !important;
+  display: none;
 }
 /* Stack the layout on small devices/viewports. */
 @media all and (max-width: 575px) {
