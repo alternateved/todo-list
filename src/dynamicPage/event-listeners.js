@@ -22,7 +22,7 @@ function startListening() {
   addTask.addEventListener("click", taskBox.addNew);
 
   const themeButton = document.querySelector("#theme-switcher");
-  themeButton.addEventListener("click", toggleTheme());
+  themeButton.addEventListener("click", toggleTheme);
 }
 
 export default startListening;

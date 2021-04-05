@@ -18,5 +18,6 @@ X dynamically create page's content
 X create dialog box to add new project
 - create animation to show task modal box to add new task  
 - find a way to "expand" tasks for details
-- establish color palette
+X add function to change theme
+X establish color palette
 */
