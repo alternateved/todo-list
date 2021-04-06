@@ -1,15 +1,17 @@
 import renderStaticPage from "./staticPage/static-page";
+import storageController from "./storage";
 import startListening from "./dynamicPage/event-listeners";
 
 const content = document.querySelector("#content");
 renderStaticPage(content);
+storageController.initiate();
 startListening();
 
 
 /* 
 X create logo for page
 - display dynamically task in main tag
-- make page responsive
+X make page responsive
 X dynamically create page's content
 - properly display elements of the page with CSS
 - add functionality to query tasks

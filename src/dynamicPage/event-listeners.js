@@ -1,6 +1,6 @@
 import projectBox from "./project-box";
 import taskBox from "./task-box";
-import toggleTheme from "./theme";
+import { toggleTheme } from "./theme";
 
 function startListening() {
   const addProjectButton = document.querySelector("#add-project");
