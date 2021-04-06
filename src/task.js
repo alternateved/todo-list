@@ -1,10 +1,12 @@
-const create = (title, description, dueDate, priority) => {
+const create = (title, description, dueDate, priority, project) => {
+  let active = true;
   return {
     title,
     description,
     dueDate,
     priority,
     project,
+    active,
   };
 };
 

@@ -16,8 +16,7 @@ const storageController = (() => {
     if (storedProjects !== undefined) {
       projects = storedProjects;
     } else {
-      projects.push(projectController.create("First project"));
-      store("projects", projects);
+      projectController.create(projects, "First project");
     }
   };
   // check localStorage for data
@@ -34,6 +33,7 @@ const storageController = (() => {
   const modify = () => {};
 
   return {
+    projects,
     initiate,
     check,
     store,

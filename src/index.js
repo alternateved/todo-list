@@ -10,16 +10,25 @@ startListening();
 
 /* 
 X create logo for page
-- display dynamically task in main tag
 X make page responsive
 X dynamically create page's content
-- properly display elements of the page with CSS
-- add functionality to query tasks
-- add functionality to segregate task by Today/7day/All
-- create animation of striking in CSS/JavaScript
-X create dialog box to add new project
-- create animation to show task modal box to add new task  
-- find a way to "expand" tasks for details
+X properly display elements of the page with CSS
 X add function to change theme
 X establish color palette
+X create dialog box to add new project
+X create task modal box to add new task
+- when creating project, save it by storage module and display change
+- when creating task, save it in project, then save it by storage module and display change
+- when modifying project, reflect it by storage module and on page
+- when modifying task, modify it's parent project and then reflect it by storage module and on page
+- display dynamically projects in nav tag
+- display dynamically projects in task modal drop-down list
+- display dynamically task in main tag
+- when changing shortcut or project, change title in main tag
+- when displaying new project on page dynamically add eventListener to enable modification   
+- when displaying new task on page dynamically add eventListener to enable modification
+- add functionality to query tasks with search bar
+- add functionality to segregate task by Today/7day/All
+- create animation of striking in CSS/JavaScript
+- find a way to "expand" tasks for details
 */
