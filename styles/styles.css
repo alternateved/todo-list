@@ -325,7 +325,7 @@ footer a {
   background: var(--surface);
   resize: vertical;
 }
-.task-box-priority {
+.task-box-options {
   padding-top: 1rem;
   display: flex;
   justify-content: space-between;
@@ -335,7 +335,17 @@ footer a {
   border: 3px solid var(--on-surface);
   appearance: none;
   height: 35px;
-  width: 40%;
+  width: 50%;
+  text-align: center;
+  border-radius: 10px;
+  color: var(--on-surface);
+  background: var(--surface);
+}
+#task-projects {
+  border: 3px solid var(--on-surface);
+  appearance: none;
+  height: 35px;
+  width: 50%;
   text-align: center;
   border-radius: 10px;
   color: var(--on-surface);
