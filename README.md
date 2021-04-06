@@ -11,6 +11,8 @@ Implementation of simple todo list from [The Odin Project](https://www.theodinpr
 
 ### **Side notes**
 * Learned how to use Font Awesome Icons
+* Learned how to better implement changing **theme** of page with use of **custom data attributes**
+* Learned how to investigate localStorage with developer tools in Chrome and Firefox  
 
 ### **Tools:**
 * Visual Studio Code

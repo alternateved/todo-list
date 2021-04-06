@@ -1,3 +1,4 @@
+import projectController from "../project";
 import createDOM from "./dom";
 
 function createModal() {
@@ -48,7 +49,7 @@ function createModal() {
     taskBoxContainer.appendChild(div);
   }
 
-  const priorityBox = createDOM("div", "task-box-priority");
+  const priorityBox = createDOM("div", "task-box-options");
   taskBoxContainer.appendChild(priorityBox);
 
   const priorityLabel = createDOM("label");
@@ -71,6 +72,22 @@ function createModal() {
   thirdOption.textContent = "High";
   thirdOption.value = "high";
   prioritySelect.appendChild(thirdOption);
+
+  const projectBox = createDOM("div", "task-box-options");
+  taskBoxContainer.appendChild(projectBox);
+
+  const projectLabel = createDOM("label");
+  projectLabel.textContent = "Project";
+  projectBox.appendChild(projectLabel);
+
+  const projectSelect = createDOM("select");
+  projectSelect.id = "task-projects";
+  projectBox.appendChild(projectSelect);
+
+  const fourthOption = createDOM("option");
+  fourthOption.textContent = "First project";
+  fourthOption.value = "first";
+  projectSelect.appendChild(fourthOption);
 
   const buttonsDiv = createDOM("div", "task-box-buttons");
   taskBoxContainer.appendChild(buttonsDiv);

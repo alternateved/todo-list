@@ -4,6 +4,7 @@ const create = (title, description, dueDate, priority) => {
     description,
     dueDate,
     priority,
+    project,
   };
 };
 

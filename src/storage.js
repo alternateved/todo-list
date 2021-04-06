@@ -1,4 +1,5 @@
 import { loadTheme } from "../src/dynamicPage/theme";
+import projectController from "./project";
 
 const storageController = (() => {
   let projects = [];
@@ -6,19 +7,18 @@ const storageController = (() => {
   const initiate = () => {
     let storedProjects = check("projects");
     let storedTheme = check("theme");
-    console.log(storedTheme);
-    
-    if(storedTheme !== undefined) {
-      loadTheme(storedTheme);
-      console.log(`LOADED: ${storedTheme}`);
-    }
 
-    if(storedProjects !== undefined) {
+    if (storedTheme !== undefined) {
+      loadTheme(storedTheme);
+    } else {
+      loadTheme("light");
+    }
+    if (storedProjects !== undefined) {
       projects = storedProjects;
     } else {
-      // create default
+      projects.push(projectController.create("First project"));
+      store("projects", projects);
     }
-
   };
   // check localStorage for data
   const check = (string) => {
@@ -29,7 +29,6 @@ const storageController = (() => {
   // store data in localStorage
   const store = (string, variable) => {
     localStorage.setItem(string, JSON.stringify(variable));
-    console.log(`STORED: ${variable}`);
   };
 
   const modify = () => {};
