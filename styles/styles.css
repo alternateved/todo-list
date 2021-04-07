@@ -155,6 +155,11 @@ nav {
 .element-title:hover {
   transform: scale(1.1);
 }
+.list-projects .list-element {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 .list-projects .fa-trash {
   padding-left: 3rem;
 }
