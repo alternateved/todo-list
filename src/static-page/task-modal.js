@@ -1,5 +1,4 @@
-import projectController from "../project";
-import createDOM from "./dom";
+import createDOM from "../helper-functions/dom";
 
 function createModal() {
   const modal = createDOM("div", "task-box", "hidden");

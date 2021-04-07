@@ -1,6 +1,6 @@
-import { loadTheme } from "../src/dynamicPage/theme";
+import { loadTheme } from "../dynamic-page/theme";
 import projectController from "./project";
-import { renderAllProjects } from "./dynamicPage/project-container";
+import { renderAllProjects } from "../dynamic-page/project-functionality";
 
 const storageController = (() => {
   let projects = [];

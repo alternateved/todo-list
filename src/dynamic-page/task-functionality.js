@@ -16,4 +16,4 @@ const taskBox = (() => {
   return { show, hide, addNew };
 })();
 
-export default taskBox;
+export { taskBox };

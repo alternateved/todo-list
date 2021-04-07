@@ -1,4 +1,4 @@
-import storageController from "../storage";
+import storageController from "../object-handlers/storage";
 
 function loadTheme(targetTheme) {
   const content = document.querySelector("#content");

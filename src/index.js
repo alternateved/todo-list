@@ -1,6 +1,6 @@
-import renderStaticPage from "./staticPage/static-page";
-import storageController from "./storage";
-import startListening from "./dynamicPage/event-listeners";
+import renderStaticPage from "./static-page/static-page";
+import storageController from "./object-handlers/storage";
+import startListening from "./dynamic-page/event-listeners";
 
 const content = document.querySelector("#content");
 renderStaticPage(content);

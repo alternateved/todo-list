@@ -1,4 +1,4 @@
-import createDOM from "./dom";
+import createDOM from "../helper-functions/dom";
 
 function createHeader() {
     const header = createDOM("header");
