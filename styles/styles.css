@@ -149,8 +149,17 @@ nav {
   padding: 0.1rem;
   transition: all 0.1s linear;
 }
-.list-element:hover {
+.list-shortcuts .list-element:hover {
   transform: scale(1.1);
+}
+.element-title:hover {
+  transform: scale(1.1);
+}
+.list-projects .fa-trash {
+  padding-left: 3rem;
+}
+.list-projects .fa-trash:hover {
+  transform: scale(1.2);
 }
 #add-project {
   border: 2px solid var(--button-border);
@@ -412,6 +421,9 @@ footer a {
   .navigation {
     flex-direction: row;
     justify-content: center;
+  }
+  .list-projects .fa-trash {
+    padding-left: 0.5rem;
   }
   .tasks-container {
     margin: 0;
