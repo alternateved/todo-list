@@ -47,13 +47,37 @@ function renderProject(title) {
   elementDiv.appendChild(titleSpan);
   // titleSpan.addEventListener("click", switchProject);
   const iconSpan = createDOM("span", "fas", "fa-trash");
+  iconSpan.addEventListener("click", removeProject);
   elementDiv.appendChild(iconSpan);
-  // iconSpan.addEventListener("click", removeProject);
+
 }
 
 function renderAllProjects (projects) {
   projects.forEach(project => renderProject(project.title));
 }
 
+function removeProject(event) {
+  let projectDiv = event.target.parentNode;
+  let projectTitle = event.target.previousSibling.textContent;
+
+  let targetIndex = storageController.projects.findIndex((project) => project.title === projectTitle);
+  storageController.projects.splice(targetIndex, 1);
+  projectDiv.remove();
+
+  storageController.store("projects", storageController.projects);
+}
+
+/* function updateBooks(event) {
+  let bookNode = event.target.parentNode;
+  let title = bookNode.querySelector("h3").textContent;
+
+  let targetIndex = myLibrary.findIndex((book) => book.title === title);
+
+  myLibrary.splice(targetIndex, 1);
+
+  localStorage.setItem("myLibrary", JSON.stringify(myLibrary));
+  displayStatistics();
+  displayShelf();
+} */
 
 export { projectBox, renderProject, renderAllProjects };
