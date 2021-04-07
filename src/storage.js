@@ -1,5 +1,6 @@
 import { loadTheme } from "../src/dynamicPage/theme";
 import projectController from "./project";
+import { renderAllProjects } from "./dynamicPage/project-container";
 
 const storageController = (() => {
   let projects = [];
@@ -15,8 +16,10 @@ const storageController = (() => {
     }
     if (storedProjects !== undefined) {
       projects = storedProjects;
+      renderAllProjects(projects);
     } else {
       projectController.create(projects, "First project");
+      renderAllProjects(projects);
     }
   };
   // check localStorage for data
