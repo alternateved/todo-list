@@ -1,5 +1,5 @@
 import projectBox from "./project-functionality";
-import { taskBox } from "./task-functionality";
+import taskBox from "./task-functionality";
 import { toggleTheme } from "./theme";
 
 function startListening() {

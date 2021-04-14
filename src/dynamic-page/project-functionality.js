@@ -2,7 +2,7 @@ import projectController from "../object-handlers/project";
 import { projects } from "../object-handlers/storage";
 import checkForInput from "../helper-functions/error";
 import createDOM from "../helper-functions/dom";
-import resetValue from "../helper-functions";
+import resetValue from "../helper-functions/reset";
 
 // module for displaying projects container in nav tag
 const projectBox = (() => {
@@ -35,9 +35,9 @@ const projectBox = (() => {
     let projectDiv = event.target.parentNode;
     let projectTitle = event.target.previousSibling.textContent;
 
-    let targetIndex = projects.findIndex((project) => {
-      if (project.title === projectTitle) return project;
-    });
+    let targetIndex = projects.findIndex(
+      (project) => project.title === projectTitle
+    );
     projectController.erase(projects, targetIndex);
     projectDiv.remove();
 
