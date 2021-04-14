@@ -16,6 +16,8 @@ const taskBox = (() => {
     box.classList.add("hidden");
   };
   const addNew = () => {
+
+
     hide();
   };
   return { show, hide, addNew };
