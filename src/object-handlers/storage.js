@@ -2,9 +2,9 @@ import { loadTheme } from "../dynamic-page/theme";
 import projectController from "./project";
 import { renderAllProjects } from "../dynamic-page/project-functionality";
 
-const storageController = (() => {
-  let projects = [];
+let projects = [];
 
+const storageController = (() => {
   const initiate = () => {
     let storedProjects = check("projects");
     let storedTheme = check("theme");
@@ -36,7 +36,6 @@ const storageController = (() => {
   const modify = () => {};
 
   return {
-    projects,
     initiate,
     check,
     store,
@@ -44,4 +43,4 @@ const storageController = (() => {
   };
 })();
 
-export default storageController;
+export { projects, storageController };

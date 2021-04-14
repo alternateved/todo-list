@@ -1,21 +1,20 @@
 import projectController from "../object-handlers/project";
-import storageController from "../object-handlers/storage";
+import { projects } from "../object-handlers/storage";
 import checkForInput from "../helper-functions/error";
-import createDOM from "../helper-functions/dom"
+import createDOM from "../helper-functions/dom";
 
 const projectBox = (() => {
-  
   const show = () => {
     const box = document.querySelector(".project-box");
     const addProjectButton = document.querySelector("#add-project");
-    
+
     addProjectButton.classList.add("hidden");
     box.classList.remove("hidden");
   };
   const hide = () => {
     const box = document.querySelector(".project-box");
     const addProjectButton = document.querySelector("#add-project");
-    
+
     addProjectButton.classList.remove("hidden");
     box.classList.add("hidden");
   };
@@ -23,7 +22,7 @@ const projectBox = (() => {
     const userInput = document.querySelector("#project-name");
 
     if (checkForInput(userInput)) {
-      projectController.create(storageController.projects, userInput.value);
+      projectController.create(projects, userInput.value);
       renderProject(userInput.value);
       userInput.value = "";
       hide();
@@ -33,10 +32,9 @@ const projectBox = (() => {
   return { show, hide, addNew };
 })();
 
-
 function renderProject(title) {
   const projectsContainer = document.querySelector(".list-projects");
-  
+
   const elementDiv = createDOM("div", "list-element");
   projectsContainer.appendChild(elementDiv);
 
@@ -49,22 +47,21 @@ function renderProject(title) {
   const iconSpan = createDOM("span", "fas", "fa-trash");
   iconSpan.addEventListener("click", removeProject);
   elementDiv.appendChild(iconSpan);
-
 }
 
-function renderAllProjects (projects) {
-  projects.forEach(project => renderProject(project.title));
+function renderAllProjects(projects) {
+  projects.forEach((project) => renderProject(project.title));
 }
 
 function removeProject(event) {
   let projectDiv = event.target.parentNode;
   let projectTitle = event.target.previousSibling.textContent;
 
-  let targetIndex = storageController.projects.findIndex((project) => project.title === projectTitle);
-  storageController.projects.splice(targetIndex, 1);
+  let targetIndex = projects.findIndex((project) => {
+    if (project.title === projectTitle) return project;
+  });
+  projectController.erase(projects, targetIndex);
   projectDiv.remove();
-
-  storageController.store("projects", storageController.projects);
 }
 
 /* function updateBooks(event) {

@@ -1,12 +1,11 @@
 import renderStaticPage from "./static-page/static-page";
-import storageController from "./object-handlers/storage";
+import { storageController } from "./object-handlers/storage";
 import startListening from "./dynamic-page/event-listeners";
 
 const content = document.querySelector("#content");
 renderStaticPage(content);
 storageController.initiate();
 startListening();
-
 
 /* 
 X create logo for page

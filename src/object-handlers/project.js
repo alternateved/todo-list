@@ -1,11 +1,11 @@
-import storageController from "./storage";
+import { storageController } from "./storage";
 
 const projectController = (() => {
   const create = (projects, title) => {
     let project = {
       title: title,
-      list: []
-    }
+      list: [],
+    };
     projects.push(project);
     storageController.store("projects", projects);
   };
@@ -15,16 +15,16 @@ const projectController = (() => {
     storageController.store("projects", projects);
   };
 
-  const remove = (projects, index) => {
+  const erase = (projects, index) => {
     projects.splice(index, 1);
     storageController.store("projects", projects);
   };
 
   return {
-    create, 
+    create,
     modify,
-    remove
-  }
+    erase,
+  };
 })();
 
 export default projectController;
