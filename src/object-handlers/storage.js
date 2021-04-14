@@ -1,6 +1,6 @@
 import { loadTheme } from "../dynamic-page/theme";
 import projectController from "./project";
-import { renderAllProjects } from "../dynamic-page/project-functionality";
+import projectBox from "../dynamic-page/project-functionality";
 
 let projects = [];
 
@@ -16,10 +16,10 @@ const storageController = (() => {
     }
     if (storedProjects !== undefined) {
       projects = storedProjects;
-      renderAllProjects(projects);
+      projectBox.renderAll(projects);
     } else {
       projectController.create(projects, "First project");
-      renderAllProjects(projects);
+      projectBox.renderAll(projects);
     }
   };
   // check localStorage for data

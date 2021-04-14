@@ -1,3 +1,7 @@
+import { projects } from "../object-handlers/storage";
+import checkForInput from "../helper-functions/error";
+import createDOM from "../helper-functions/dom";
+
 const taskBox = (() => {
   const show = () => {
     const box = document.querySelector(".task-box");
