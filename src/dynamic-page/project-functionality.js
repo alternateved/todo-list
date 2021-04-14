@@ -38,8 +38,6 @@ function renderProject(title) {
   const elementDiv = createDOM("div", "list-element");
   projectsContainer.appendChild(elementDiv);
 
-  // RENDER PROJECT IN TASKBOX
-
   const titleSpan = createDOM("span", "element-title");
   titleSpan.textContent = title;
   elementDiv.appendChild(titleSpan);
@@ -47,6 +45,11 @@ function renderProject(title) {
   const iconSpan = createDOM("span", "fas", "fa-trash");
   iconSpan.addEventListener("click", removeProject);
   elementDiv.appendChild(iconSpan);
+
+  const projectSelect = document.querySelector("#task-projects");
+  const projectOption = createDOM("option");
+  projectOption.textContent = title;
+  projectSelect.appendChild(projectOption);
 }
 
 function renderAllProjects(projects) {
@@ -62,19 +65,13 @@ function removeProject(event) {
   });
   projectController.erase(projects, targetIndex);
   projectDiv.remove();
+
+  const projectSelectOptions = document.querySelectorAll(
+    "#task-projects > option"
+  );
+  projectSelectOptions.forEach((option) => {
+    if (option.textContent === projectTitle) option.remove();
+  });
 }
-
-/* function updateBooks(event) {
-  let bookNode = event.target.parentNode;
-  let title = bookNode.querySelector("h3").textContent;
-
-  let targetIndex = myLibrary.findIndex((book) => book.title === title);
-
-  myLibrary.splice(targetIndex, 1);
-
-  localStorage.setItem("myLibrary", JSON.stringify(myLibrary));
-  displayStatistics();
-  displayShelf();
-} */
 
 export { projectBox, renderProject, renderAllProjects };

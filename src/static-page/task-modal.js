@@ -83,11 +83,6 @@ function createModal() {
   projectSelect.id = "task-projects";
   projectBox.appendChild(projectSelect);
 
-  const fourthOption = createDOM("option");
-  fourthOption.textContent = "First project";
-  fourthOption.value = "first";
-  projectSelect.appendChild(fourthOption);
-
   const buttonsDiv = createDOM("div", "task-box-buttons");
   taskBoxContainer.appendChild(buttonsDiv);
 
