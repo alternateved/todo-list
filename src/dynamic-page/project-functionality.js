@@ -2,6 +2,7 @@ import projectController from "../object-handlers/project";
 import { projects } from "../object-handlers/storage";
 import checkForInput from "../helper-functions/error";
 import createDOM from "../helper-functions/dom";
+import resetValue from "../helper-functions";
 
 // module for displaying projects container in nav tag
 const projectBox = (() => {
@@ -26,7 +27,7 @@ const projectBox = (() => {
     if (checkForInput(userInput)) {
       projectController.create(projects, userInput.value);
       render(userInput.value);
-      userInput.value = "";
+      resetValue(userInput);
       hide();
     }
   };

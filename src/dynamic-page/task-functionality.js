@@ -1,6 +1,7 @@
 import { projects } from "../object-handlers/storage";
 import checkForInput from "../helper-functions/error";
 import createDOM from "../helper-functions/dom";
+import resetValue from "../helper-functions/reset";
 
 const taskBox = (() => {
   const show = () => {
