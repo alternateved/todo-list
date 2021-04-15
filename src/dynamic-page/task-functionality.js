@@ -1,4 +1,4 @@
-import { projects } from "../object-handlers/storage";
+import { projects, storageController } from "../object-handlers/storage";
 import checkForInput from "../helper-functions/error";
 import createDOM from "../helper-functions/dom";
 import resetValue from "../helper-functions/reset";
@@ -33,12 +33,14 @@ const taskBox = (() => {
     );
 
     if (taskData.every(checkForInput)) {
-      console.log(taskController.create(taskData));
       // add to project
-      let targetIndex = projects.findIndex((project) => project.title === taskProject.value);
-
+      let targetIndex = projects.findIndex(
+        (project) => project.title === taskProject.value
+      );
       //how to add to project?
-      projects[targetIndex].list.push("something");
+      projects[targetIndex].list.push(taskController.create(taskData));
+      storageController.store("projects", projects);
+      
       // render on page (with evenHandlers)
       taskData.forEach((element) => {
         if (element.id === "task-priority" || element.id === "task-projects") {
