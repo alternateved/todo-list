@@ -152,6 +152,9 @@ nav {
 .list-shortcuts .list-element:hover {
   transform: scale(1.1);
 }
+.element-title {
+  transition: all 0.1s linear;
+}
 .element-title:hover {
   transform: scale(1.1);
 }
@@ -162,6 +165,7 @@ nav {
 }
 .list-projects .fa-trash {
   padding-left: 3rem;
+  transition: all 0.1s linear;
 }
 .list-projects .fa-trash:hover {
   transform: scale(1.2);
@@ -260,10 +264,20 @@ main {
   transition: all 0.1s linear;
 }
 .task:hover {
-  transform: scale(1.05);
+  transform: scale(1.01);
 }
 .task .fa-edit {
   padding-left: 1rem;
+  transition: all 0.1s linear;
+}
+.task .fa-edit:hover {
+  transform: scale(1.2);
+}
+.task .fa-trash {
+  transition: all 0.1s linear;
+}
+.task .fa-trash:hover {
+  transform: scale(1.2);
 }
 #add-task {
   border: 1px solid var(--on-surface);
