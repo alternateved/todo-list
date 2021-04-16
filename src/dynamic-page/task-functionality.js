@@ -34,13 +34,14 @@ const taskBox = (() => {
 
     if (taskData.every(checkForInput)) {
       // add to project
+      let newTask = taskController.create(taskData);
       let targetIndex = projects.findIndex(
         (project) => project.title === taskProject.value
       );
-      //how to add to project?
-      projects[targetIndex].list.push(taskController.create(taskData));
+      projects[targetIndex].list.push(newTask);
+      render(newTask);
       storageController.store("projects", projects);
-      
+
       // render on page (with evenHandlers)
       taskData.forEach((element) => {
         if (element.id === "task-priority" || element.id === "task-projects") {
@@ -50,6 +51,37 @@ const taskBox = (() => {
       hide();
     }
   };
+
+  const render = ({title, dueDate}) => {
+    const tasksContainer = document.querySelector(".tasks");
+    const referenceTask = document.querySelector("#add-task");
+    const taskDiv = createDOM("div", "task");
+    tasksContainer.insertBefore(taskDiv, referenceTask);
+    
+    const leftPanel = createDOM("div", "left-task-panel");
+    taskDiv.appendChild(leftPanel);
+    const checkIcon = createDOM("span", "far", "fa-circle");
+    const titleSpan = createDOM("span");
+    titleSpan.textContent = title;
+    leftPanel.appendChild(checkIcon);
+    leftPanel.appendChild(titleSpan);
+    
+    const rightPanel = createDOM("div", "right-task-panel");
+    taskDiv.appendChild(rightPanel);
+    const dateSpan = createDOM("span");
+    dateSpan.textContent = dueDate;
+    const editIcon = createDOM("span", "fas", "fa-edit");
+    const trashIcon = createDOM("span", "fas", "fa-trash");
+    rightPanel.appendChild(dateSpan);
+    rightPanel.appendChild(editIcon);
+    rightPanel.appendChild(trashIcon);
+
+  };
+
+  const renderProject = (project) => {
+    project.forEach((task) => render(task));
+  };
+
   return { show, hide, addNew };
 })();
 
