@@ -13,13 +13,7 @@ function startListening() {
   addButton.addEventListener("click", projectBox.addNew);
 
   const addTaskButton = document.querySelector("#add-task");
-  addTaskButton.addEventListener("click", taskBox.show);
-
-  const cancelTask = document.querySelector("#cancel-task-box");
-  cancelTask.addEventListener("click", taskBox.hide);
-
-  const addTask = document.querySelector("#add-task-box");
-  addTask.addEventListener("click", taskBox.addNew);
+  addTaskButton.addEventListener("click", taskBox.show("New task"));
 
   const themeButton = document.querySelector("#theme-switcher");
   themeButton.addEventListener("click", toggleTheme);

@@ -5,8 +5,9 @@ import resetValue from "../helper-functions/reset";
 import taskController from "../object-handlers/task";
 
 const taskBox = (() => {
-  const show = () => {
+  const show = (option) => {
     const box = document.querySelector(".task-box");
+    modifyModal(option);
     box.classList.remove("hidden");
     window.addEventListener("click", (event) => {
       if (event.target == box) hide();
@@ -16,7 +17,26 @@ const taskBox = (() => {
     const box = document.querySelector(".task-box");
     box.classList.add("hidden");
   };
-  const addNew = () => {
+
+  const modifyModal = (option) => {
+    const taskBoxTitle = document.querySelector(".task-box-title");
+    const taskButton = document.querySelector("#add-task-box");
+
+    const cancelTask = document.querySelector("#cancel-task-box");
+    cancelTask.addEventListener("click", taskBox.hide);
+
+    if (option === "New Task") {
+      taskBoxTitle.textContent = option;
+      taskButton.textContent = "Add Task";
+      taskButton.addEventListener("click", addTask);
+    } else if (option === "Update Task") {
+      taskBoxTitle.textContent = option;
+      taskButton.textContent = "Modify task";
+      taskButton.addEventListener("click", updateTask);
+    }
+  };
+
+  const addTask = () => {
     const taskData = [];
 
     const taskTitle = document.querySelector("#task-title");
@@ -52,12 +72,14 @@ const taskBox = (() => {
     }
   };
 
-  const render = ({title, dueDate}) => {
+  const updateTask = () => {};
+
+  const render = ({ title, dueDate }) => {
     const tasksContainer = document.querySelector(".tasks");
     const referenceTask = document.querySelector("#add-task");
     const taskDiv = createDOM("div", "task");
     tasksContainer.insertBefore(taskDiv, referenceTask);
-    
+
     const leftPanel = createDOM("div", "left-task-panel");
     taskDiv.appendChild(leftPanel);
     const checkIcon = createDOM("span", "far", "fa-circle");
@@ -65,24 +87,24 @@ const taskBox = (() => {
     titleSpan.textContent = title;
     leftPanel.appendChild(checkIcon);
     leftPanel.appendChild(titleSpan);
-    
+
     const rightPanel = createDOM("div", "right-task-panel");
     taskDiv.appendChild(rightPanel);
     const dateSpan = createDOM("span");
     dateSpan.textContent = dueDate;
     const editIcon = createDOM("span", "fas", "fa-edit");
+    editIcon.addEventListener("click", updateTask);
     const trashIcon = createDOM("span", "fas", "fa-trash");
     rightPanel.appendChild(dateSpan);
     rightPanel.appendChild(editIcon);
     rightPanel.appendChild(trashIcon);
-
   };
 
   const renderProject = (project) => {
     project.forEach((task) => render(task));
   };
 
-  return { show, hide, addNew };
+  return { show, hide, addTask, updateTask };
 })();
 
 export default taskBox;
