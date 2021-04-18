@@ -3,6 +3,7 @@ import checkForInput from "../helper-functions/error";
 import createDOM from "../helper-functions/dom";
 import resetValue from "../helper-functions/reset";
 import taskController from "../object-handlers/task";
+import projectController from "../object-handlers/project";
 
 const taskBox = (() => {
   const show = (option) => {
@@ -28,11 +29,38 @@ const taskBox = (() => {
     if (option === "New Task") {
       taskBoxTitle.textContent = option;
       taskButton.textContent = "Add Task";
+      taskButton.removeEventListener("click", updateTask);
       taskButton.addEventListener("click", addTask);
-    } else if (option === "Update Task") {
-      taskBoxTitle.textContent = option;
+    } else {
+      const taskTitle = document.querySelector("#task-title");
+      const taskDescription = document.querySelector("#task-description");
+      const taskDueDate = document.querySelector("#task-date");
+      const taskPriority = document.querySelector("#task-priority");
+      const taskProject = document.querySelector("#task-projects");
+      const currentTaskDiv = option.target.parentNode.parentNode;
+
+      let taskInModification = currentTaskDiv.querySelector(".task-title")
+        .textContent;
+      console.log(`taskInModification.text: ${taskInModification}`);
+
+      let currentProject = projectController.locate(taskInModification);
+      taskInModification = taskController.locate(taskInModification);
+      console.log(`taskInModification.object: ${taskInModification}`);
+      
+      taskTitle.value = taskInModification.title;
+      taskDescription.value = taskInModification.description;
+      taskDueDate.value = taskInModification.dueDate;
+      taskPriority.value = taskInModification.priority;
+      taskProject.value = currentProject.title;
+
+      taskBoxTitle.textContent = "Update Task";
       taskButton.textContent = "Modify task";
-      taskButton.addEventListener("click", updateTask);
+      taskButton.removeEventListener("click", addTask);
+      taskButton.addEventListener("click", () =>
+        updateTask(taskInModification, currentProject, currentTaskDiv)
+      );
+
+      //render current data
     }
   };
 
@@ -59,21 +87,57 @@ const taskBox = (() => {
         (project) => project.title === taskProject.value
       );
       projects[targetIndex].list.push(newTask);
-      render(newTask);
       storageController.store("projects", projects);
 
-      // render on page (with evenHandlers)
-      taskData.forEach((element) => {
-        if (element.id === "task-priority" || element.id === "task-projects") {
-          element.selectedIndex = 0;
-        } else resetValue(element);
-      });
+      render(newTask);
+      reset(taskData);
       hide();
     }
   };
 
-  const updateTask = () => {};
+  const updateTask = (targetTask, oldProject, targetNode) => {
+    console.log("UPDATING");
+    const taskData = [];
 
+    const taskTitle = document.querySelector("#task-title");
+    const taskDescription = document.querySelector("#task-description");
+    const taskDueDate = document.querySelector("#task-date");
+    const taskPriority = document.querySelector("#task-priority");
+    const taskProject = document.querySelector("#task-projects");
+    taskData.push(
+      taskTitle,
+      taskDescription,
+      taskDueDate,
+      taskPriority,
+      taskProject
+    );
+
+    if (taskData.every(checkForInput)) {
+      let taskIndex = taskController.locateIndex(targetTask.title);
+      let oldProjectIndex = projectController.locateIndex(oldProject.title);
+      taskController.erase(oldProjectIndex, taskIndex);
+
+      let newTask = taskController.create(taskData);
+      let projectIndex = projectController.locateIndex(taskProject.value);
+      projects[projectIndex].list.push(newTask);
+      storageController.store("projects", projects);
+
+      targetNode.querySelector(".task-title").textContent = taskTitle.value;
+      targetNode.querySelector(".task-date").textContent = taskDueDate.value;
+      reset(taskData);
+      hide();
+    }
+  };
+
+  const reset = (data) => {
+    data.forEach((element) => {
+      if (element.id === "task-priority" || element.id === "task-projects") {
+        element.selectedIndex = 0;
+      } else resetValue(element);
+    });
+  };
+
+  // render task page (with evenHandlers)
   const render = ({ title, dueDate }) => {
     const tasksContainer = document.querySelector(".tasks");
     const referenceTask = document.querySelector("#add-task");
@@ -83,17 +147,17 @@ const taskBox = (() => {
     const leftPanel = createDOM("div", "left-task-panel");
     taskDiv.appendChild(leftPanel);
     const checkIcon = createDOM("span", "far", "fa-circle");
-    const titleSpan = createDOM("span");
+    const titleSpan = createDOM("span", "task-title");
     titleSpan.textContent = title;
     leftPanel.appendChild(checkIcon);
     leftPanel.appendChild(titleSpan);
 
     const rightPanel = createDOM("div", "right-task-panel");
     taskDiv.appendChild(rightPanel);
-    const dateSpan = createDOM("span");
+    const dateSpan = createDOM("span", "task-date");
     dateSpan.textContent = dueDate;
     const editIcon = createDOM("span", "fas", "fa-edit");
-    editIcon.addEventListener("click", updateTask);
+    editIcon.addEventListener("click", show);
     const trashIcon = createDOM("span", "fas", "fa-trash");
     rightPanel.appendChild(dateSpan);
     rightPanel.appendChild(editIcon);

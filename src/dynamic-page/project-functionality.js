@@ -25,7 +25,7 @@ const projectBox = (() => {
     const userInput = document.querySelector("#project-name");
 
     if (checkForInput(userInput)) {
-      projectController.create(projects, userInput.value);
+      projectController.create(userInput.value);
       render(userInput.value);
       resetValue(userInput);
       hide();
@@ -38,7 +38,7 @@ const projectBox = (() => {
     let targetIndex = projects.findIndex(
       (project) => project.title === projectTitle
     );
-    projectController.erase(projects, targetIndex);
+    projectController.erase(targetIndex);
     projectDiv.remove();
 
     const projectSelectOptions = document.querySelectorAll(

@@ -20,12 +20,14 @@ X when creating project, save it by storage module and display change
 X when creating task, save it in project, then save it by storage module and display change
 X display dynamically projects in nav tag
 X display dynamically projects in task modal drop-down list
+X when displaying new project on page dynamically add eventListener to enable modification  
 - display dynamically task in main tag
+- ensure that tasks titles are not the same
 - find a way to "expand" tasks for details
-? when modifying project, reflect it by storage module and on page
+- add functionality to modify task (and re-render it on page)
+- add functionality to remove task (and un-render it on page)
 - when modifying task, modify it's parent project and then reflect it by storage module and on page
-- when changing shortcut or project, change title in main tag
-X when displaying new project on page dynamically add eventListener to enable modification   
+- when changing shortcut or project, change title in main tag 
 - when displaying new task on page dynamically add eventListener to enable modification
 - add functionality to query tasks with search bar
 - add functionality to segregate task by Today/7day/All

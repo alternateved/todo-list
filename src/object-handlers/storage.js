@@ -18,7 +18,7 @@ const storageController = (() => {
       projects = storedProjects;
       projectBox.renderAll(projects);
     } else {
-      projectController.create(projects, "First project");
+      projectController.create("First project");
       projectBox.renderAll(projects);
     }
   };

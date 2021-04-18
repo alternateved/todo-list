@@ -1,7 +1,7 @@
-import { storageController } from "./storage";
+import { projects, storageController } from "./storage";
 
 const projectController = (() => {
-  const create = (projects, title) => {
+  const create = (title) => {
     let project = {
       title: title,
       list: [],
@@ -10,20 +10,36 @@ const projectController = (() => {
     storageController.store("projects", projects);
   };
 
-  const modify = (projects, index, title) => {
+  const modify = (index, title) => {
     projects[index].title = title;
     storageController.store("projects", projects);
   };
 
-  const erase = (projects, index) => {
+  const erase = (index) => {
     projects.splice(index, 1);
     storageController.store("projects", projects);
+  };
+
+  const locate = (targetTask) => {
+    projects.some((project) => {
+      project.list.some((task) => {
+        if (task.title === targetTask) {
+          return project;
+        }
+      });
+    });
+  };
+
+  const locateIndex = (targetProject) => {
+    return projects.findIndex((project) => project.title === targetProject);
   };
 
   return {
     create,
     modify,
     erase,
+    locate,
+    locateIndex,
   };
 })();
 
