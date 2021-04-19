@@ -17,6 +17,7 @@ const taskBox = (() => {
   const hide = () => {
     const box = document.querySelector(".task-box");
     box.classList.add("hidden");
+    reset();
   };
 
   const modifyModal = (option) => {
@@ -41,12 +42,10 @@ const taskBox = (() => {
 
       let taskInModification = currentTaskDiv.querySelector(".task-title")
         .textContent;
-      console.log(`taskInModification.text: ${taskInModification}`);
 
       let currentProject = projectController.locate(taskInModification);
       taskInModification = taskController.locate(taskInModification);
-      console.log(`taskInModification.object: ${taskInModification}`);
-      
+
       taskTitle.value = taskInModification.title;
       taskDescription.value = taskInModification.description;
       taskDueDate.value = taskInModification.dueDate;
@@ -90,9 +89,9 @@ const taskBox = (() => {
       storageController.store("projects", projects);
 
       render(newTask);
-      reset(taskData);
-      hide();
     }
+    reset();
+    hide();
   };
 
   const updateTask = (targetTask, oldProject, targetNode) => {
@@ -124,12 +123,26 @@ const taskBox = (() => {
 
       targetNode.querySelector(".task-title").textContent = taskTitle.value;
       targetNode.querySelector(".task-date").textContent = taskDueDate.value;
-      reset(taskData);
-      hide();
     }
+    reset();
+    hide();
   };
 
-  const reset = (data) => {
+  const reset = () => {
+    let data = [];
+    const taskTitle = document.querySelector("#task-title");
+    const taskDescription = document.querySelector("#task-description");
+    const taskDueDate = document.querySelector("#task-date");
+    const taskPriority = document.querySelector("#task-priority");
+    const taskProject = document.querySelector("#task-projects");
+    data.push(
+      taskTitle,
+      taskDescription,
+      taskDueDate,
+      taskPriority,
+      taskProject
+    );
+
     data.forEach((element) => {
       if (element.id === "task-priority" || element.id === "task-projects") {
         element.selectedIndex = 0;

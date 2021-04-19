@@ -17,25 +17,32 @@ const taskController = (() => {
   };
 
   const erase = (projectIndex, todoIndex) => {
-    projects[projectIndex].splice(todoIndex, 1);
+    projects[projectIndex].list.splice(todoIndex, 1);
   };
 
   const locate = (targetTask) => {
+    let locatedTask;
     projects.some((project) => {
       project.list.some((task) => {
         if (task.title === targetTask) {
           console.log(`if: task.title: ${task.title}`);
           console.log(`task: ${task}`);
-          return task;
+          locatedTask = task;
+          return true;
         }
       });
     });
+    return locatedTask;
   };
 
   const locateIndex = (targetTask) => {
-    return projects.some((project) => {
-      project.list.findIndex((task) => task.title === targetTask);
+    let locatedIndex;
+    projects.some((project) => {
+      locatedIndex = project.list.findIndex(
+        (task) => task.title === targetTask
+      );
     });
+    return locatedIndex;
   };
 
   return { create, modify, erase, locate, locateIndex };
