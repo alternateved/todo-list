@@ -53,7 +53,8 @@ const taskBox = (() => {
 
       taskBoxTitle.textContent = "Update Task";
       taskButton.textContent = "Modify task";
-      taskButton.onclick = () => updateTask(taskInModification, currentProject, currentTaskDiv);
+      taskButton.onclick = () =>
+        updateTask(taskInModification, currentProject, currentTaskDiv);
       //render current data
     }
   };
@@ -110,7 +111,7 @@ const taskBox = (() => {
       let taskIndex = taskController.locateIndex(targetTask.title);
       let oldProjectIndex = projectController.locateIndex(oldProject.title);
       taskController.erase(oldProjectIndex, taskIndex);
-
+      
       let newTask = taskController.create(taskData);
       let projectIndex = projectController.locateIndex(taskProject.value);
       projects[projectIndex].list.push(newTask);
@@ -121,6 +122,17 @@ const taskBox = (() => {
     }
     reset();
     hide();
+  };
+
+  const removeTask = (targetTask) => {
+    const targetNode = targetTask.target.parentNode.parentNode;
+    const taskTitle = targetNode.querySelector(".task-title").textContent;
+
+    let taskIndex = taskController.locateIndex(taskTitle);
+    let taskProject = projectController.locate(taskTitle);
+    let projectIndex = projectController.locateIndex(taskProject.title);
+    taskController.erase(projectIndex, taskIndex);
+    targetNode.remove();
   };
 
   const reset = () => {
@@ -167,6 +179,7 @@ const taskBox = (() => {
     const editIcon = createDOM("span", "fas", "fa-edit");
     editIcon.addEventListener("click", show);
     const trashIcon = createDOM("span", "fas", "fa-trash");
+    trashIcon.addEventListener("click", removeTask);
     rightPanel.appendChild(dateSpan);
     rightPanel.appendChild(editIcon);
     rightPanel.appendChild(trashIcon);
