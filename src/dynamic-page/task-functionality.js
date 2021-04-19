@@ -30,8 +30,7 @@ const taskBox = (() => {
     if (option === "New Task") {
       taskBoxTitle.textContent = option;
       taskButton.textContent = "Add Task";
-      taskButton.removeEventListener("click", updateTask);
-      taskButton.addEventListener("click", addTask);
+      taskButton.onclick = addTask;
     } else {
       const taskTitle = document.querySelector("#task-title");
       const taskDescription = document.querySelector("#task-description");
@@ -54,11 +53,7 @@ const taskBox = (() => {
 
       taskBoxTitle.textContent = "Update Task";
       taskButton.textContent = "Modify task";
-      taskButton.removeEventListener("click", addTask);
-      taskButton.addEventListener("click", () =>
-        updateTask(taskInModification, currentProject, currentTaskDiv)
-      );
-
+      taskButton.onclick = () => updateTask(taskInModification, currentProject, currentTaskDiv);
       //render current data
     }
   };

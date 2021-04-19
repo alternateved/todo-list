@@ -25,8 +25,6 @@ const taskController = (() => {
     projects.some((project) => {
       project.list.some((task) => {
         if (task.title === targetTask) {
-          console.log(`if: task.title: ${task.title}`);
-          console.log(`task: ${task}`);
           locatedTask = task;
           return true;
         }
