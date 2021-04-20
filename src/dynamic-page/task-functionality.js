@@ -181,9 +181,15 @@ const taskBox = (() => {
   };
 
   const renderProject = (project) => {
+    clear();
     project.list.forEach((task) => render(task));
   };
   
+  const clear = () => {
+    const tasks = document.querySelectorAll(".task");
+    tasks.forEach(task => task.remove());
+  };
+
   return { addTask, updateTask, renderProject }
 })();
 
