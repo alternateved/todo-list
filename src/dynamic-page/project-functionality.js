@@ -1,6 +1,6 @@
 import projectController from "../object-handlers/project";
 import { projects } from "../object-handlers/storage";
-import checkForInput from "../helper-functions/error";
+import { checkForDuplicates,checkForInput } from "../helper-functions/error";
 import createDOM from "../helper-functions/dom";
 import resetValue from "../helper-functions/reset";
 import taskController from "./task-functionality";
@@ -25,7 +25,10 @@ const projectBox = (() => {
   const addNew = () => {
     const userInput = document.querySelector("#project-name");
 
-    if (checkForInput(userInput)) {
+    if (
+      checkForInput(userInput) &&
+      checkForDuplicates(projectController.locateByProject(userInput.value))
+    ) {
       projectController.create(userInput.value);
       render(userInput.value);
       resetValue(userInput);
@@ -76,7 +79,9 @@ const projectBox = (() => {
   };
 
   const loadProject = (event) => {
-    const targetProject = projectController.locateByProject(event.target.textContent);
+    const targetProject = projectController.locateByProject(
+      event.target.textContent
+    );
     console.log(targetProject);
   };
 

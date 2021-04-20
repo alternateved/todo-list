@@ -30,6 +30,7 @@ X when displaying new task on page dynamically add eventListener to enable modif
 - ensure that tasks titles are not the same
 X find a way to "expand" tasks for details
 - when changing shortcut or project, change title in main tag 
+? separate taskModal from taskBox module
 - add functionality to query tasks with search bar
 - add functionality to segregate task by Today/7day/All
 - add functionality to sort items by date (ascending and descending)

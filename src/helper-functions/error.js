@@ -1,9 +1,15 @@
 function checkForInput(input) {
   if (input.value === "") {
     alert("Field should not be empty.");
-    console.log(input);
     return false;
   } else return true;
 }
 
-export default checkForInput;
+function checkForDuplicates(fun) {
+  if (fun) {
+    alert("Object by this name already exists.");
+    return false;
+  } else return true;
+}
+
+export { checkForInput, checkForDuplicates };

@@ -1,5 +1,5 @@
 import { projects, storageController } from "../object-handlers/storage";
-import checkForInput from "../helper-functions/error";
+import { checkForDuplicates, checkForInput } from "../helper-functions/error";
 import createDOM from "../helper-functions/dom";
 import resetValue from "../helper-functions/reset";
 import taskController from "../object-handlers/task";
@@ -74,7 +74,10 @@ const taskBox = (() => {
       taskProject
     );
 
-    if (taskData.every(checkForInput)) {
+    if (
+      taskData.every(checkForInput) &&
+      checkForDuplicates(projectController.locateByTask(taskTitle.value))
+    ) {
       // add to project
       let newTask = taskController.create(taskData);
       projectController.insert(taskProject.value, newTask);
@@ -99,9 +102,12 @@ const taskBox = (() => {
       taskProject
     );
 
-    if (taskData.every(checkForInput)) {
+    if (
+      taskData.every(checkForInput) &&
+      checkForDuplicates(projectController.locateByTask(taskTitle.value))
+    ) {
       taskController.erase(oldProject, targetTask.title);
-      
+
       let newTask = taskController.create(taskData);
       projectController.insert(taskProject.value, newTask);
 
