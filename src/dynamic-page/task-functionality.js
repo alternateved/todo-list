@@ -154,16 +154,20 @@ const taskBox = (() => {
 
   const toggleStrike = (event) => {
     const checkIcon = event.target;
+    const taskTitle = checkIcon.parentNode.querySelector(".task-title");
     const targetTask = taskController.locate(
       checkIcon.parentNode.querySelector(".task-title").textContent
     );
+    
 
     if (targetTask.active) {
       checkIcon.classList.remove("fa-circle");
       checkIcon.classList.add("fa-check-circle");
+      taskTitle.classList.add("strikethrough");
       taskController.modify(targetTask, "active", false);
     } else {
       checkIcon.classList.remove("fa-check-circle");
+      taskTitle.classList.remove("strikethrough");
       checkIcon.classList.add("fa-circle");
       taskController.modify(targetTask, "active", true);
     }
