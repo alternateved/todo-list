@@ -27,7 +27,8 @@ X when modifying task, modify it's parent project and then reflect it by storage
 X when displaying new task on page dynamically add eventListener to enable modification
 - on page start load "All tasks" tag and all appropriate tasks
 - display dynamically task in main tag
-- ensure that tasks titles are not the same
+X ensure that tasks titles are not the same
+X ensure that projects titles are not the same
 X find a way to "expand" tasks for details
 - when changing shortcut or project, change title in main tag 
 ? separate taskModal from taskBox module

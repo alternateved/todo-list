@@ -1,5 +1,5 @@
 import projectBox from "./project-functionality";
-import taskBox from "./task-functionality";
+import { taskModal } from "./task-functionality";
 import { toggleTheme } from "./theme";
 
 function startListening() {
@@ -13,7 +13,7 @@ function startListening() {
   addButton.addEventListener("click", projectBox.addNew);
 
   const addTaskButton = document.querySelector("#add-task");
-  addTaskButton.addEventListener("click", () => taskBox.show("New Task"));
+  addTaskButton.addEventListener("click", () => taskModal.show("New Task"));
 
   const themeButton = document.querySelector("#theme-switcher");
   themeButton.addEventListener("click", toggleTheme);

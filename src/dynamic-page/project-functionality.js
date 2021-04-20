@@ -3,7 +3,6 @@ import { projects } from "../object-handlers/storage";
 import { checkForDuplicates,checkForInput } from "../helper-functions/error";
 import createDOM from "../helper-functions/dom";
 import resetValue from "../helper-functions/reset";
-import taskController from "./task-functionality";
 
 // module for displaying projects container in nav tag
 const projectBox = (() => {
