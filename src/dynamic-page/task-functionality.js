@@ -61,7 +61,6 @@ const taskBox = (() => {
 
   const addTask = () => {
     const taskData = [];
-
     const taskTitle = document.querySelector("#task-title");
     const taskDescription = document.querySelector("#task-description");
     const taskDueDate = document.querySelector("#task-date");
@@ -78,12 +77,7 @@ const taskBox = (() => {
     if (taskData.every(checkForInput)) {
       // add to project
       let newTask = taskController.create(taskData);
-      let targetIndex = projects.findIndex(
-        (project) => project.title === taskProject.value
-      );
-      projects[targetIndex].list.push(newTask);
-      storageController.store("projects", projects);
-
+      projectController.insert(taskProject.value, newTask);
       render(newTask);
     }
     reset();
@@ -91,9 +85,7 @@ const taskBox = (() => {
   };
 
   const updateTask = (targetTask, oldProject, targetNode) => {
-    console.log("UPDATING");
     const taskData = [];
-
     const taskTitle = document.querySelector("#task-title");
     const taskDescription = document.querySelector("#task-description");
     const taskDueDate = document.querySelector("#task-date");
@@ -111,9 +103,7 @@ const taskBox = (() => {
       taskController.erase(oldProject, targetTask.title);
       
       let newTask = taskController.create(taskData);
-      let projectIndex = projectController.locateIndex(taskProject.value);
-      projects[projectIndex].list.push(newTask);
-      storageController.store("projects", projects);
+      projectController.insert(taskProject.value, newTask);
 
       targetNode.querySelector(".task-title").textContent = taskTitle.value;
       targetNode.querySelector(".task-date").textContent = taskDueDate.value;
