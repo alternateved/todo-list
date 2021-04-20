@@ -24,12 +24,7 @@ const taskController = (() => {
   const locate = (targetTask) => {
     let locatedTask;
     projects.some((project) => {
-      project.list.some((task) => {
-        if (task.title === targetTask) {
-          locatedTask = task;
-          return true;
-        }
-      });
+      locatedTask = project.list.find((task) => task.title === targetTask);
     });
     return locatedTask;
   };

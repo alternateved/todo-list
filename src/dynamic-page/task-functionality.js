@@ -44,7 +44,8 @@ const taskBox = (() => {
 
       let currentProject = projectController.locateByTask(taskInModification);
       taskInModification = taskController.locate(taskInModification);
-
+      console.log(taskInModification);
+      
       taskTitle.value = taskInModification.title;
       taskDescription.value = taskInModification.description;
       taskDueDate.value = taskInModification.dueDate;

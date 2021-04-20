@@ -21,20 +21,13 @@ const projectController = (() => {
   };
 
   const locateByTask = (targetTask) => {
-    let locatedProject;
-    projects.some((project) => {
-      project.list.some((task) => {
-        if (task.title === targetTask) {
-          locatedProject = project;
-          return true;
-        }
-      });
-    });
-    return locatedProject;
+    return projects.find((project) =>
+      project.list.find((task) => task.title === targetTask)
+    );
   };
 
   const locateByProject = (targetProject) => {
-    return projects.find(project => project.title === targetProject);
+    return projects.find((project) => project.title === targetProject);
   };
 
   const locateIndex = (targetProject) => {
