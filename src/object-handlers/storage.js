@@ -17,8 +17,10 @@ const storageController = (() => {
     if (storedProjects !== undefined) {
       projects = storedProjects;
       projectBox.renderAll(projects);
+      projectBox.loadAllTasks();
     } else {
       projectController.create("First project");
+      // add some default tasks
       projectBox.renderAll(projects);
     }
   };

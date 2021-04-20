@@ -17,6 +17,9 @@ function startListening() {
 
   const themeButton = document.querySelector("#theme-switcher");
   themeButton.addEventListener("click", toggleTheme);
+
+  const allTaskButton = document.querySelector("#all-tasks-shortcut");
+  allTaskButton.addEventListener("click", projectBox.loadAllTasks);
 }
 
 export default startListening;

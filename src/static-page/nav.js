@@ -46,6 +46,7 @@ function createNav() {
     switch (i) {
       case 0:
         {
+          listElement.id = "today-shortcut"
           const icon = createDOM("span", "fas", "fa-calendar-day");
           const description = createDOM("span");
           description.textContent = "Today";
@@ -55,6 +56,7 @@ function createNav() {
         break;
       case 1:
         {
+          listElement.id = "week-shortcut"
           const icon = createDOM("span", "fas", "fa-calendar-week");
           const description = createDOM("span");
           description.textContent = "Next 7 Days";
@@ -64,6 +66,7 @@ function createNav() {
         break;
       case 2:
         {
+          listElement.id = "all-tasks-shortcut"
           const icon = createDOM("span", "fas", "fa-calendar");
           const description = createDOM("span");
           description.textContent = "All tasks";

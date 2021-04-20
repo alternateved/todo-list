@@ -82,12 +82,19 @@ const projectBox = (() => {
     const targetProject = projectController.locateByProject(
       event.target.textContent
     );
+    taskBox.clear();
+    taskBox.setTitle(targetProject.title);
     taskBox.renderProject(targetProject);
   };
 
-  const loadAllProjects = () => {};
+  const loadAllTasks = () => {
+    taskBox.setTitle("All tasks");
+    projects.forEach(project => {
+      taskBox.renderProject(project);
+    })
+  };
 
-  return { show, hide, addNew, erase, render, renderAll };
+  return { show, hide, addNew, erase, render, renderAll, loadAllTasks };
 })();
 
 export default projectBox;
