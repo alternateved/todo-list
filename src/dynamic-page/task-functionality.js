@@ -105,7 +105,7 @@ const taskBox = (() => {
       checkForDuplicates(projectController.locateByTask(taskTitle.value))
     ) {
       // add to project
-      let newTask = taskController.create(taskData.map(item => item.value));
+      let newTask = taskController.create(taskData.map((item) => item.value));
       projectController.insert(taskProject.value, newTask);
       render(newTask);
     }
@@ -134,7 +134,7 @@ const taskBox = (() => {
     ) {
       taskController.erase(oldProject, targetTask.title);
 
-      let newTask = taskController.create(taskData.map(item => item.value));
+      let newTask = taskController.create(taskData.map((item) => item.value));
       projectController.insert(taskProject.value, newTask);
 
       targetNode.querySelector(".task-title").textContent = taskTitle.value;
@@ -152,6 +152,23 @@ const taskBox = (() => {
     targetNode.remove();
   };
 
+  const toggleStrike = (event) => {
+    const checkIcon = event.target;
+    const targetTask = taskController.locate(
+      checkIcon.parentNode.querySelector(".task-title").textContent
+    );
+
+    if (targetTask.active) {
+      checkIcon.classList.remove("fa-circle");
+      checkIcon.classList.add("fa-check-circle");
+      taskController.modify(targetTask, "active", false);
+    } else {
+      checkIcon.classList.remove("fa-check-circle");
+      checkIcon.classList.add("fa-circle");
+      taskController.modify(targetTask, "active", true);
+    }
+  };
+
   const render = ({ title, dueDate }) => {
     const tasksContainer = document.querySelector(".tasks");
     const referenceTask = document.querySelector("#add-task");
@@ -161,7 +178,7 @@ const taskBox = (() => {
     const leftPanel = createDOM("div", "left-task-panel");
     taskDiv.appendChild(leftPanel);
     const checkIcon = createDOM("span", "far", "fa-circle");
-    // checkIcon.addEventListener("click", toggleTask);
+    checkIcon.addEventListener("click", toggleStrike);
     const titleSpan = createDOM("span", "task-title");
     titleSpan.textContent = title;
     leftPanel.appendChild(checkIcon);
@@ -183,7 +200,7 @@ const taskBox = (() => {
   const renderProject = (project) => {
     project.list.forEach((task) => render(task));
   };
-  
+
   const setTitle = (title) => {
     const titleDiv = document.querySelector(".tasks-title");
     titleDiv.textContent = title;
@@ -191,10 +208,10 @@ const taskBox = (() => {
 
   const clear = () => {
     const tasks = document.querySelectorAll(".task");
-    tasks.forEach(task => task.remove());
+    tasks.forEach((task) => task.remove());
   };
 
-  return { addTask, updateTask, renderProject, setTitle, clear }
+  return { addTask, updateTask, renderProject, setTitle, clear };
 })();
 
 export { taskModal, taskBox };
