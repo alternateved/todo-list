@@ -44,8 +44,7 @@ const taskBox = (() => {
 
       let currentProject = projectController.locateByTask(taskInModification);
       taskInModification = taskController.locate(taskInModification);
-      console.log(taskInModification);
-      
+
       taskTitle.value = taskInModification.title;
       taskDescription.value = taskInModification.description;
       taskDueDate.value = taskInModification.dueDate;
@@ -109,9 +108,7 @@ const taskBox = (() => {
     );
 
     if (taskData.every(checkForInput)) {
-      let taskIndex = taskController.locateIndex(targetTask.title);
-      let oldProjectIndex = projectController.locateIndex(oldProject.title);
-      taskController.erase(oldProjectIndex, taskIndex);
+      taskController.erase(oldProject, targetTask.title);
       
       let newTask = taskController.create(taskData);
       let projectIndex = projectController.locateIndex(taskProject.value);
@@ -128,11 +125,8 @@ const taskBox = (() => {
   const removeTask = (targetTask) => {
     const targetNode = targetTask.target.parentNode.parentNode;
     const taskTitle = targetNode.querySelector(".task-title").textContent;
-
-    let taskIndex = taskController.locateIndex(taskTitle);
-    let taskProject = projectController.locateByTask(taskTitle);
-    let projectIndex = projectController.locateIndex(taskProject.title);
-    taskController.erase(projectIndex, taskIndex);
+    const taskProject = projectController.locateByTask(taskTitle);
+    taskController.erase(taskProject, taskTitle);
     targetNode.remove();
   };
 

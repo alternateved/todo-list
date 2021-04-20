@@ -16,8 +16,9 @@ const taskController = (() => {
     todo[attribute] = newValue;
   };
 
-  const erase = (projectIndex, todoIndex) => {
-    projects[projectIndex].list.splice(todoIndex, 1);
+  const erase = (project, taskName) => {
+    let taskIndex = locateIndex(taskName);
+    project.list.splice(taskIndex, 1);
     storageController.store("projects", projects);
   };
 
