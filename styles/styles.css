@@ -415,7 +415,7 @@ footer a {
   display: none;
 }
 /* Stack the layout on small devices/viewports. */
-@media all and (max-width: 575px) {
+@media all and (max-width: 600px) {
   #content {
     grid-template-areas:
       "header"
@@ -431,6 +431,7 @@ footer a {
     flex-direction: row;
     justify-content: space-around;
   }
+  
   .wrap {
     display: none;
     width: 60%;
