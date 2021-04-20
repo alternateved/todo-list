@@ -3,6 +3,7 @@ import { projects } from "../object-handlers/storage";
 import checkForInput from "../helper-functions/error";
 import createDOM from "../helper-functions/dom";
 import resetValue from "../helper-functions/reset";
+import taskController from "./task-functionality";
 
 // module for displaying projects container in nav tag
 const projectBox = (() => {
@@ -58,7 +59,7 @@ const projectBox = (() => {
     const titleSpan = createDOM("span", "element-title");
     titleSpan.textContent = title;
     elementDiv.appendChild(titleSpan);
-    // titleSpan.addEventListener("click", switchProject);
+    titleSpan.addEventListener("click", loadProject);
     const iconSpan = createDOM("span", "fas", "fa-trash");
     iconSpan.addEventListener("click", erase);
     elementDiv.appendChild(iconSpan);
@@ -73,6 +74,13 @@ const projectBox = (() => {
   const renderAll = (projects) => {
     projects.forEach((project) => render(project.title));
   };
+
+  const loadProject = (event) => {
+    const targetProject = projectController.locateByProject(event.target.textContent);
+    console.log(targetProject);
+  };
+
+  const loadAllProjects = () => {};
 
   return { show, hide, addNew, erase, render, renderAll };
 })();

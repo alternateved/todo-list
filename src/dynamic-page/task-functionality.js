@@ -42,7 +42,7 @@ const taskBox = (() => {
       let taskInModification = currentTaskDiv.querySelector(".task-title")
         .textContent;
 
-      let currentProject = projectController.locate(taskInModification);
+      let currentProject = projectController.locateByTask(taskInModification);
       taskInModification = taskController.locate(taskInModification);
 
       taskTitle.value = taskInModification.title;
@@ -129,7 +129,7 @@ const taskBox = (() => {
     const taskTitle = targetNode.querySelector(".task-title").textContent;
 
     let taskIndex = taskController.locateIndex(taskTitle);
-    let taskProject = projectController.locate(taskTitle);
+    let taskProject = projectController.locateByTask(taskTitle);
     let projectIndex = projectController.locateIndex(taskProject.title);
     taskController.erase(projectIndex, taskIndex);
     targetNode.remove();

@@ -20,7 +20,7 @@ const projectController = (() => {
     storageController.store("projects", projects);
   };
 
-  const locate = (targetTask) => {
+  const locateByTask = (targetTask) => {
     let locatedProject;
     projects.some((project) => {
       project.list.some((task) => {
@@ -33,6 +33,10 @@ const projectController = (() => {
     return locatedProject;
   };
 
+  const locateByProject = (targetProject) => {
+    return projects.find(project => project.title === targetProject);
+  };
+
   const locateIndex = (targetProject) => {
     return projects.findIndex((project) => project.title === targetProject);
   };
@@ -41,7 +45,8 @@ const projectController = (() => {
     create,
     modify,
     erase,
-    locate,
+    locateByTask,
+    locateByProject,
     locateIndex,
   };
 })();
