@@ -4,10 +4,10 @@ const taskController = (() => {
   const create = ([title, description, dueDate, priority]) => {
     let active = true;
     return {
-      title: title.value,
-      description: description.value,
-      dueDate: dueDate.value,
-      priority: priority.value,
+      title,
+      description,
+      dueDate,
+      priority,
       active,
     };
   };

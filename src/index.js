@@ -25,13 +25,13 @@ X add functionality to modify task (and re-render it on page)
 X add functionality to remove task (and un-render it on page)
 X when modifying task, modify it's parent project and then reflect it by storage module and on page
 X when displaying new task on page dynamically add eventListener to enable modification
-- on page start load "All tasks" tag and all appropriate tasks
-- display dynamically task in main tag
+X on page start load "All tasks" tag and all appropriate tasks
+X display dynamically task in main tag
 X ensure that tasks titles are not the same
 X ensure that projects titles are not the same
 X find a way to "expand" tasks for details
-- when changing shortcut or project, change title in main tag 
-? separate taskModal from taskBox module
+X when changing shortcut or project, change title in main tag 
+X separate taskModal from taskBox module
 - add functionality to query tasks with search bar
 - add functionality to segregate task by Today/7day/All
 - add functionality to sort items by date (ascending and descending)

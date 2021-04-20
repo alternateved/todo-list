@@ -105,7 +105,7 @@ const taskBox = (() => {
       checkForDuplicates(projectController.locateByTask(taskTitle.value))
     ) {
       // add to project
-      let newTask = taskController.create(taskData);
+      let newTask = taskController.create(taskData.map(item => item.value));
       projectController.insert(taskProject.value, newTask);
       render(newTask);
     }
@@ -134,7 +134,7 @@ const taskBox = (() => {
     ) {
       taskController.erase(oldProject, targetTask.title);
 
-      let newTask = taskController.create(taskData);
+      let newTask = taskController.create(taskData.map(item => item.value));
       projectController.insert(taskProject.value, newTask);
 
       targetNode.querySelector(".task-title").textContent = taskTitle.value;

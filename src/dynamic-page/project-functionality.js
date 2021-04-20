@@ -15,6 +15,7 @@ const projectBox = (() => {
     addProjectButton.classList.add("hidden");
     box.classList.remove("hidden");
   };
+  
   const hide = () => {
     const box = document.querySelector(".project-box");
     const addProjectButton = document.querySelector("#add-project");
@@ -22,6 +23,7 @@ const projectBox = (() => {
     addProjectButton.classList.remove("hidden");
     box.classList.add("hidden");
   };
+
   const addNew = () => {
     const userInput = document.querySelector("#project-name");
 
@@ -35,6 +37,7 @@ const projectBox = (() => {
       hide();
     }
   };
+
   const erase = (event) => {
     let projectDiv = event.target.parentNode;
     let projectTitle = event.target.previousSibling.textContent;
@@ -52,6 +55,7 @@ const projectBox = (() => {
       if (option.textContent === projectTitle) option.remove();
     });
   };
+
   // functions for rendering projects in projects container in nav tag
   const render = (title) => {
     const projectsContainer = document.querySelector(".list-projects");
@@ -73,7 +77,7 @@ const projectBox = (() => {
     projectOption.textContent = title;
     projectSelect.appendChild(projectOption);
   };
-
+  
   const renderAll = (projects) => {
     projects.forEach((project) => render(project.title));
   };
