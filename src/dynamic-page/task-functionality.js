@@ -3,6 +3,8 @@ import createDOM from "../helper-functions/dom";
 import resetValue from "../helper-functions/reset";
 import taskController from "../object-handlers/task";
 import projectController from "../object-handlers/project";
+import searchTerm from "./search";
+import projectBox from "./project-functionality";
 
 const taskModal = (() => {
   const show = (option) => {
@@ -104,10 +106,10 @@ const taskBox = (() => {
       taskData.every(checkForInput) &&
       checkForDuplicates(projectController.locateByTask(taskTitle.value))
     ) {
-      // add to project
       let newTask = taskController.create(taskData.map((item) => item.value));
       projectController.insert(taskProject.value, newTask);
-      render(newTask);
+
+      checkState();
 
       taskModal.reset();
       taskModal.hide();
@@ -129,20 +131,18 @@ const taskBox = (() => {
       taskProject
     );
 
-    if (
-      taskData.every(checkForInput) &&
-      checkForDuplicates(projectController.locateByTask(taskTitle.value))
-    ) {
+    if (taskData.every(checkForInput)) {
       taskController.erase(oldProject, targetTask.title);
+      if (checkForDuplicates(projectController.locateByTask(taskTitle.value))) {
+        let newTask = taskController.create(taskData.map((item) => item.value));
+        projectController.insert(taskProject.value, newTask);
 
-      let newTask = taskController.create(taskData.map((item) => item.value));
-      projectController.insert(taskProject.value, newTask);
+        targetNode.querySelector(".task-title").textContent = taskTitle.value;
+        targetNode.querySelector(".task-date").textContent = taskDueDate.value;
 
-      targetNode.querySelector(".task-title").textContent = taskTitle.value;
-      targetNode.querySelector(".task-date").textContent = taskDueDate.value;
-      
-      taskModal.reset();
-      taskModal.hide();
+        taskModal.reset();
+        taskModal.hide();
+      }
     }
   };
 
@@ -190,7 +190,7 @@ const taskBox = (() => {
     leftPanel.appendChild(titleSpan);
 
     if (!active) titleSpan.classList.add("strikethrough");
-    
+
     const rightPanel = createDOM("div", "right-task-panel");
     taskDiv.appendChild(rightPanel);
     const dateSpan = createDOM("span", "task-date");
@@ -215,6 +215,32 @@ const taskBox = (() => {
   const setTitle = (title) => {
     const titleDiv = document.querySelector(".tasks-title");
     titleDiv.textContent = title;
+  };
+
+  const checkState = () => {
+    const containerTitle = document.querySelector(".tasks-title").textContent;
+
+    switch (containerTitle) {
+      case "All tasks":
+        projectBox.loadAllTasks();
+        break;
+      case "Next 7 Days":
+        projectBox.loadWeekTasks();
+        break;
+      case "Today":
+        projectBox.loadTodayTasks();
+        break;
+
+      default:
+        if (containerTitle.includes("Searched")) searchTerm();
+        else {
+          const targetProject = projectController.locateByProject(
+            containerTitle
+          );
+          taskBox.clear();
+          taskBox.renderProject(targetProject);
+        }
+    }
   };
 
   const clear = () => {
