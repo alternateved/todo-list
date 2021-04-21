@@ -97,7 +97,7 @@ nav {
   position: relative;
   display: flex;
 }
-.searchTerm {
+.search-term {
   width: 100%;
   border: 3px solid var(--on-surface);
   color: var(--on-surface);
@@ -108,10 +108,10 @@ nav {
   border-radius: 10px 0 0 10px;
   outline: none;
 }
-.searchTerm:focus {
+.search-term:focus {
   color: white;
 }
-.searchButton {
+.search-button {
   width: 40px;
   height: 36px;
   border: 1px solid var(--on-surface);
@@ -239,7 +239,7 @@ main {
 }
 .tasks-container {
   padding: 0.5rem;
-  margin: 0 15vw;
+  margin: 0 12vw;
 }
 .tasks-header {
   display: flex;
