@@ -250,6 +250,9 @@ main {
   font-weight: bold;
   font-size: calc(1rem + 0.2vw);
 }
+.tasks-sort {
+  cursor: pointer;
+}
 .tasks > * {
   margin: 0.5rem;
 }
