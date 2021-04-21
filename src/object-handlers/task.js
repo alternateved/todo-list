@@ -26,6 +26,7 @@ const taskController = (() => {
     let locatedTask;
     projects.some((project) => {
       locatedTask = project.list.find((task) => task.title === targetTask);
+      if (locatedTask) return true;
     });
     return locatedTask;
   };
@@ -34,9 +35,26 @@ const taskController = (() => {
     let resultArray = [];
     projects.forEach((project) =>
       project.list.forEach((task) => {
-        if (task.title.toLowerCase().includes(term) || task.description.toLowerCase().includes(term)) {
+        if (
+          task.title.toLowerCase().includes(term) ||
+          task.description.toLowerCase().includes(term)
+        ) {
           resultArray.push(task);
         }
+      })
+    );
+    return resultArray;
+  };
+
+  const locateByDate = (dateBeginning, dateEnd = dateBeginning) => {
+    let resultArray = [];
+    projects.forEach((project) =>
+      project.list.forEach((task) => {
+        if (
+          new Date(task.dueDate).getDate() >= dateBeginning.getDate() &&
+          new Date(task.dueDate).getDate() <= dateEnd.getDate()
+        )
+          resultArray.push(task);
       })
     );
     return resultArray;
@@ -48,11 +66,20 @@ const taskController = (() => {
       locatedIndex = project.list.findIndex(
         (task) => task.title === targetTask
       );
+      if (locatedIndex) return true;
     });
     return locatedIndex;
   };
 
-  return { create, modify, erase, locate, locateByTerm, locateIndex };
+  return {
+    create,
+    modify,
+    erase,
+    locate,
+    locateByTerm,
+    locateByDate,
+    locateIndex,
+  };
 })();
 
 export default taskController;

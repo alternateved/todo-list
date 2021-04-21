@@ -41,9 +41,14 @@ const taskModal = (() => {
 
       let taskInModification = currentTaskDiv.querySelector(".task-title")
         .textContent;
+      console.log(
+        "🚀 ~ file: task-functionality.js ~ line 43 ~ modifyModal ~ taskInModification",
+        taskInModification
+      );
 
       let currentProject = projectController.locateByTask(taskInModification);
       taskInModification = taskController.locate(taskInModification);
+      console.log("🚀 ~ file: task-functionality.js ~ line 51 ~ modifyModal ~ taskInModification", taskInModification)
 
       taskTitle.value = taskInModification.title;
       taskDescription.value = taskInModification.description;
@@ -158,7 +163,6 @@ const taskBox = (() => {
     const targetTask = taskController.locate(
       checkIcon.parentNode.querySelector(".task-title").textContent
     );
-    
 
     if (targetTask.active) {
       checkIcon.classList.remove("fa-circle");
@@ -205,8 +209,8 @@ const taskBox = (() => {
     project.list.forEach((task) => render(task));
   };
 
-  const renderSearched = (tasks) => {
-    tasks.forEach(task => render(task));
+  const renderCustom = (tasks) => {
+    tasks.forEach((task) => render(task));
   };
 
   const setTitle = (title) => {
@@ -219,7 +223,7 @@ const taskBox = (() => {
     tasks.forEach((task) => task.remove());
   };
 
-  return { addTask, updateTask, renderProject, renderSearched, setTitle, clear };
+  return { addTask, updateTask, renderProject, renderCustom, setTitle, clear };
 })();
 
 export { taskModal, taskBox };

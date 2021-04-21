@@ -32,6 +32,12 @@ function startListening() {
   const themeButton = document.querySelector("#theme-switcher");
   themeButton.addEventListener("click", toggleTheme);
 
+  const todayButton = document.querySelector("#today-shortcut");
+  todayButton.addEventListener("click", projectBox.loadTodayTasks);
+
+  const weekButton = document.querySelector("#week-shortcut");
+  weekButton.addEventListener("click", projectBox.loadWeekTasks);
+
   const allTaskButton = document.querySelector("#all-tasks-shortcut");
   allTaskButton.addEventListener("click", projectBox.loadAllTasks);
 }

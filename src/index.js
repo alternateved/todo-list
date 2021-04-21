@@ -36,5 +36,6 @@ X create animation of striking in CSS/JavaScript
 X add functionality to query tasks with search bar
 - add functionality to segregate task by Today/7day/All
 - add functionality to sort items by date (ascending and descending)
+- use external library to format dates
 - use Autoprefixer to fix possible cross-browser styling issues 
 */

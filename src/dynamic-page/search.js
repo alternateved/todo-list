@@ -8,7 +8,7 @@ function searchTerm () {
 
   const resultOfSearch = taskController.locateByTerm(term);
   taskBox.clear();
-  taskBox.renderSearched(resultOfSearch);
+  taskBox.renderCustom(resultOfSearch);
   taskBox.setTitle(`Searched for: "${term}"`);
   resetValue(searchBox);
 }

@@ -1,9 +1,10 @@
 import projectController from "../object-handlers/project";
 import { projects } from "../object-handlers/storage";
-import { checkForDuplicates,checkForInput } from "../helper-functions/error";
+import { checkForDuplicates, checkForInput } from "../helper-functions/error";
 import createDOM from "../helper-functions/dom";
 import resetValue from "../helper-functions/reset";
 import { taskBox } from "./task-functionality";
+import taskController from "../object-handlers/task";
 
 // module for displaying projects container in nav tag
 const projectBox = (() => {
@@ -15,7 +16,7 @@ const projectBox = (() => {
     addProjectButton.classList.add("hidden");
     box.classList.remove("hidden");
   };
-  
+
   const hide = () => {
     const box = document.querySelector(".project-box");
     const addProjectButton = document.querySelector("#add-project");
@@ -77,7 +78,7 @@ const projectBox = (() => {
     projectOption.textContent = title;
     projectSelect.appendChild(projectOption);
   };
-  
+
   const renderAll = (projects) => {
     projects.forEach((project) => render(project.title));
   };
@@ -91,15 +92,47 @@ const projectBox = (() => {
     taskBox.renderProject(targetProject);
   };
 
+  const loadTodayTasks = () => {
+    taskBox.clear();
+    taskBox.setTitle("Today");
+
+    const todayDate = new Date();
+    
+    const resultOfFilter = taskController.locateByDate(todayDate);
+    taskBox.renderCustom(resultOfFilter);
+  };
+
+  const loadWeekTasks = () => {
+    taskBox.clear();
+    taskBox.setTitle("Next 7 Days");
+
+    const todayDate = new Date();
+    const weekDate = new Date(todayDate);
+    weekDate.setDate(todayDate.getDate() + 7);
+
+    const resultOfFilter = taskController.locateByDate(todayDate, weekDate);
+    taskBox.renderCustom(resultOfFilter);
+  };
+
   const loadAllTasks = () => {
     taskBox.clear();
     taskBox.setTitle("All tasks");
-    projects.forEach(project => {
+    projects.forEach((project) => {
       taskBox.renderProject(project);
-    })
+    });
   };
 
-  return { show, hide, addNew, erase, render, renderAll, loadAllTasks };
+  return {
+    show,
+    hide,
+    addNew,
+    erase,
+    render,
+    renderAll,
+    loadTodayTasks,
+    loadWeekTasks,
+    loadAllTasks,
+  };
 })();
 
 export default projectBox;
