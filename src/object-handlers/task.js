@@ -34,6 +34,7 @@ const taskController = (() => {
 
   const locateByTerm = (term) => {
     let resultArray = [];
+    term = term.toLowerCase();
     projects.forEach((project) =>
       project.list.forEach((task) => {
         if (

@@ -109,7 +109,7 @@ const taskBox = (() => {
       let newTask = taskController.create(taskData.map((item) => item.value));
       projectController.insert(taskProject.value, newTask);
 
-      checkState();
+      loadState();
 
       taskModal.reset();
       taskModal.hide();
@@ -217,9 +217,9 @@ const taskBox = (() => {
     titleDiv.textContent = title;
   };
 
-  const checkState = () => {
+  // render task in proper context
+  const loadState = () => {
     const containerTitle = document.querySelector(".tasks-title").textContent;
-
     switch (containerTitle) {
       case "All tasks":
         projectBox.loadAllTasks();
@@ -232,8 +232,15 @@ const taskBox = (() => {
         break;
 
       default:
-        if (containerTitle.includes("Searched")) searchTerm();
-        else {
+        // nasty hack to reuse searchTerm function
+        if (containerTitle.includes("Searched")) {
+          const searchBox = document.querySelector(".search-term");
+          searchBox.value = containerTitle
+            .replace("Searched for:", "")
+            .replace(/"/g, "")
+            .trim();
+          searchTerm();
+        } else {
           const targetProject = projectController.locateByProject(
             containerTitle
           );
