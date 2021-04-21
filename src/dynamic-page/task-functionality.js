@@ -41,14 +41,9 @@ const taskModal = (() => {
 
       let taskInModification = currentTaskDiv.querySelector(".task-title")
         .textContent;
-      console.log(
-        "🚀 ~ file: task-functionality.js ~ line 43 ~ modifyModal ~ taskInModification",
-        taskInModification
-      );
 
       let currentProject = projectController.locateByTask(taskInModification);
       taskInModification = taskController.locate(taskInModification);
-      console.log("🚀 ~ file: task-functionality.js ~ line 51 ~ modifyModal ~ taskInModification", taskInModification)
 
       taskTitle.value = taskInModification.title;
       taskDescription.value = taskInModification.description;
@@ -113,9 +108,10 @@ const taskBox = (() => {
       let newTask = taskController.create(taskData.map((item) => item.value));
       projectController.insert(taskProject.value, newTask);
       render(newTask);
+
+      taskModal.reset();
+      taskModal.hide();
     }
-    taskModal.reset();
-    taskModal.hide();
   };
 
   const updateTask = (targetTask, oldProject, targetNode) => {
@@ -144,9 +140,10 @@ const taskBox = (() => {
 
       targetNode.querySelector(".task-title").textContent = taskTitle.value;
       targetNode.querySelector(".task-date").textContent = taskDueDate.value;
+      
+      taskModal.reset();
+      taskModal.hide();
     }
-    taskModal.reset();
-    taskModal.hide();
   };
 
   const removeTask = (targetTask) => {
@@ -177,7 +174,7 @@ const taskBox = (() => {
     }
   };
 
-  const render = ({ title, dueDate }) => {
+  const render = ({ title, dueDate, active }) => {
     const tasksContainer = document.querySelector(".tasks");
     const referenceTask = document.querySelector("#add-task");
     const taskDiv = createDOM("div", "task");
@@ -192,6 +189,8 @@ const taskBox = (() => {
     leftPanel.appendChild(checkIcon);
     leftPanel.appendChild(titleSpan);
 
+    if (!active) titleSpan.classList.add("strikethrough");
+    
     const rightPanel = createDOM("div", "right-task-panel");
     taskDiv.appendChild(rightPanel);
     const dateSpan = createDOM("span", "task-date");

@@ -14,6 +14,7 @@ const taskController = (() => {
 
   const modify = (todo, attribute, newValue) => {
     todo[attribute] = newValue;
+    storageController.store("projects", projects);
   };
 
   const erase = (project, taskName) => {
