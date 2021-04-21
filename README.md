@@ -4,7 +4,7 @@ Implementation of simple todo list from [The Odin Project](https://www.theodinpr
 
 **Live preview** of the project is available [here](https://alternateved.github.io/todo-list/).
 
-![Demo]()
+![Demo](/dist/images/peek.gif)
 
 ## **Features**
 * You can **create** or **remove** projects

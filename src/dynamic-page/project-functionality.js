@@ -24,6 +24,7 @@ const projectBox = (() => {
 
     addProjectButton.classList.remove("hidden");
     box.classList.add("hidden");
+    reset();
   };
 
   // add new project and render it on page
@@ -37,7 +38,7 @@ const projectBox = (() => {
       projectController.create(userInput.value);
       render(userInput.value);
       loadProjectFromTitle(userInput.value);
-      resetValue(userInput);
+      reset();
       hide();
     }
   };
@@ -138,6 +139,11 @@ const projectBox = (() => {
       taskBox.renderProject(project);
     });
   };
+
+  const reset = () => {
+    const userInput = document.querySelector("#project-name");
+    resetValue(userInput);
+  }
 
   return {
     show,
