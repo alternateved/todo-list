@@ -6,9 +6,9 @@ import resetValue from "../helper-functions/reset";
 import { taskBox } from "./task-functionality";
 import taskController from "../object-handlers/task";
 
-// module for displaying projects container in nav tag
+// module for project functionality in nav tag
 const projectBox = (() => {
-  // functions for displaying box for adding new project
+  // display box for adding new project
   const show = () => {
     const box = document.querySelector(".project-box");
     const addProjectButton = document.querySelector("#add-project");
@@ -17,6 +17,7 @@ const projectBox = (() => {
     box.classList.remove("hidden");
   };
 
+  // hide box for adding new project
   const hide = () => {
     const box = document.querySelector(".project-box");
     const addProjectButton = document.querySelector("#add-project");
@@ -25,6 +26,7 @@ const projectBox = (() => {
     box.classList.add("hidden");
   };
 
+  // add new project and render it on page
   const addNew = () => {
     const userInput = document.querySelector("#project-name");
 
@@ -34,6 +36,7 @@ const projectBox = (() => {
     ) {
       projectController.create(userInput.value);
       render(userInput.value);
+      loadProjectFromTitle(userInput.value);
       resetValue(userInput);
       hide();
     }
@@ -84,6 +87,12 @@ const projectBox = (() => {
     projects.forEach((project) => render(project.title));
   };
 
+  const loadProjectFromTitle = (title) => {
+    const targetProject = projectController.locateByProject(title);
+    taskBox.clear();
+    taskBox.renderProject(targetProject);
+  };
+
   const loadProject = (event) => {
     const targetProject = projectController.locateByProject(
       event.target.textContent
@@ -130,6 +139,7 @@ const projectBox = (() => {
     erase,
     render,
     renderAll,
+    loadProjectFromTitle,
     loadTodayTasks,
     loadWeekTasks,
     loadAllTasks,

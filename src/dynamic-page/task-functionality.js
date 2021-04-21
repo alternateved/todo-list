@@ -243,11 +243,7 @@ const taskBox = (() => {
             .trim();
           searchTerm();
         } else {
-          const targetProject = projectController.locateByProject(
-            containerTitle
-          );
-          taskBox.clear();
-          taskBox.renderProject(targetProject);
+          projectBox.loadProjectFromTitle(containerTitle);
         }
     }
   };
