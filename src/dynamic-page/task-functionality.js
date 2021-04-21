@@ -5,6 +5,7 @@ import taskController from "../object-handlers/task";
 import projectController from "../object-handlers/project";
 import searchTerm from "./search";
 import projectBox from "./project-functionality";
+import { format, compareAsc, compareDesc } from "date-fns";
 
 const taskModal = (() => {
   const show = (option) => {
@@ -137,8 +138,7 @@ const taskBox = (() => {
         let newTask = taskController.create(taskData.map((item) => item.value));
         projectController.insert(taskProject.value, newTask);
 
-        targetNode.querySelector(".task-title").textContent = taskTitle.value;
-        targetNode.querySelector(".task-date").textContent = taskDueDate.value;
+        loadState();
 
         taskModal.reset();
         taskModal.hide();
@@ -194,7 +194,7 @@ const taskBox = (() => {
     const rightPanel = createDOM("div", "right-task-panel");
     taskDiv.appendChild(rightPanel);
     const dateSpan = createDOM("span", "task-date");
-    dateSpan.textContent = dueDate;
+    dateSpan.textContent = format(new Date(dueDate), "dd/MM/yyyy");
     const editIcon = createDOM("span", "fas", "fa-edit");
     editIcon.addEventListener("click", taskModal.show);
     const trashIcon = createDOM("span", "fas", "fa-trash");
@@ -205,10 +205,12 @@ const taskBox = (() => {
   };
 
   const renderProject = (project) => {
+    sortOption(project.list);
     project.list.forEach((task) => render(task));
   };
 
   const renderCustom = (tasks) => {
+    sortOption(tasks);
     tasks.forEach((task) => render(task));
   };
 
@@ -250,12 +252,50 @@ const taskBox = (() => {
     }
   };
 
+  const sortOption = (tasks) => {
+    if (checkForSort())
+      tasks.sort((a, b) =>
+        compareAsc(new Date(a.dueDate), new Date(b.dueDate))
+      );
+    else
+      tasks.sort((a, b) =>
+        compareDesc(new Date(a.dueDate), new Date(b.dueDate))
+      );
+  };
+
+  const checkForSort = () => {
+    const sortIcon = document.querySelector(".tasks-sort").firstElementChild;
+    return sortIcon.classList.contains("fa-sort-up");
+  };
+  const toggleSort = () => {
+    const sortIcon = document.querySelector(".tasks-sort").firstElementChild;
+
+    if (checkForSort()) {
+      sortIcon.classList.remove("fa-sort-up");
+      sortIcon.classList.add("fa-sort-down");
+      loadState();
+    } else {
+      sortIcon.classList.remove("fa-sort-down");
+      sortIcon.classList.add("fa-sort-up");
+      loadState();
+    }
+  };
+
   const clear = () => {
     const tasks = document.querySelectorAll(".task");
     tasks.forEach((task) => task.remove());
   };
 
-  return { addTask, updateTask, renderProject, renderCustom, setTitle, clear };
+  return {
+    addTask,
+    updateTask,
+    renderProject,
+    renderCustom,
+    setTitle,
+    loadState,
+    toggleSort,
+    clear,
+  };
 })();
 
 export { taskModal, taskBox };

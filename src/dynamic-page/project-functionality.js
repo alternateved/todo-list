@@ -55,6 +55,7 @@ const projectBox = (() => {
     projectSelectOptions.forEach((option) => {
       if (option.textContent === projectTitle) option.remove();
     });
+    taskBox.loadState();
   };
 
   // functions for rendering projects in projects container in nav tag
@@ -97,7 +98,7 @@ const projectBox = (() => {
     taskBox.setTitle("Today");
 
     const todayDate = new Date();
-    
+
     const resultOfFilter = taskController.locateByDate(todayDate);
     taskBox.renderCustom(resultOfFilter);
   };

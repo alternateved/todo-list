@@ -1,5 +1,5 @@
 import projectBox from "./project-functionality";
-import { taskModal } from "./task-functionality";
+import { taskModal, taskBox } from "./task-functionality";
 import { toggleTheme } from "./theme";
 import searchTerm from "./search";
 
@@ -40,6 +40,9 @@ function startListening() {
 
   const allTaskButton = document.querySelector("#all-tasks-shortcut");
   allTaskButton.addEventListener("click", projectBox.loadAllTasks);
+
+  const sortDiv = document.querySelector(".tasks-sort");
+  sortDiv.addEventListener("click", taskBox.toggleSort);
 }
 
 export default startListening;

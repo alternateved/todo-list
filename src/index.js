@@ -34,7 +34,8 @@ X when changing shortcut or project, change title in main tag
 X separate taskModal from taskBox module
 X create animation of striking in CSS/JavaScript
 X add functionality to query tasks with search bar
-- add functionality to segregate task by Today/7day/All
+X add functionality to segregate task by Today/7day/All
+X ensure that tasks are created and modified in proper context
 - add functionality to sort items by date (ascending and descending)
 - use external library to format dates
 - use Autoprefixer to fix possible cross-browser styling issues 
