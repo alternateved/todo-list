@@ -32,9 +32,9 @@ X ensure that projects titles are not the same
 X find a way to "expand" tasks for details
 X when changing shortcut or project, change title in main tag 
 X separate taskModal from taskBox module
+X create animation of striking in CSS/JavaScript
 - add functionality to query tasks with search bar
 - add functionality to segregate task by Today/7day/All
 - add functionality to sort items by date (ascending and descending)
-- create animation of striking in CSS/JavaScript
 - use Autoprefixer to fix possible cross-browser styling issues 
 */

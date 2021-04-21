@@ -6,13 +6,12 @@ function createSearchBar() {
   const searchDiv = createDOM("div", "search");
   wrapDiv.appendChild(searchDiv);
 
-  const searchInput = createDOM("input", "searchTerm");
+  const searchInput = createDOM("input", "search-term");
   searchInput.type = "text";
   searchInput.placeholder = "Search...";
   searchDiv.appendChild(searchInput);
 
-  const searchButton = createDOM("button", "searchButton");
-  searchButton.type = "submit";
+  const searchButton = createDOM("button", "search-button");
   searchDiv.appendChild(searchButton);
 
   const searchIcon = createDOM("span", "fa", "fa-search");

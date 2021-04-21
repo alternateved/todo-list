@@ -30,6 +30,18 @@ const taskController = (() => {
     return locatedTask;
   };
 
+  const locateByTerm = (term) => {
+    let resultArray = [];
+    projects.forEach((project) =>
+      project.list.forEach((task) => {
+        if (task.title.toLowerCase().includes(term) || task.description.toLowerCase().includes(term)) {
+          resultArray.push(task);
+        }
+      })
+    );
+    return resultArray;
+  };
+
   const locateIndex = (targetTask) => {
     let locatedIndex;
     projects.some((project) => {
@@ -40,7 +52,7 @@ const taskController = (() => {
     return locatedIndex;
   };
 
-  return { create, modify, erase, locate, locateIndex };
+  return { create, modify, erase, locate, locateByTerm, locateIndex };
 })();
 
 export default taskController;

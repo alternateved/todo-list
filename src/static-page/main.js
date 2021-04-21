@@ -10,7 +10,6 @@ function createMain() {
   tasksContainer.appendChild(tasksHeader);
 
   const headerTitle = createDOM("div", "tasks-title");
-  headerTitle.textContent = "Placeholder";
   tasksHeader.appendChild(headerTitle);
 
   const headerSort = createDOM("div", "tasks-sort");

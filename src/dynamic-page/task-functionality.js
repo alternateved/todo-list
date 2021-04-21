@@ -205,6 +205,10 @@ const taskBox = (() => {
     project.list.forEach((task) => render(task));
   };
 
+  const renderSearched = (tasks) => {
+    tasks.forEach(task => render(task));
+  };
+
   const setTitle = (title) => {
     const titleDiv = document.querySelector(".tasks-title");
     titleDiv.textContent = title;
@@ -215,7 +219,7 @@ const taskBox = (() => {
     tasks.forEach((task) => task.remove());
   };
 
-  return { addTask, updateTask, renderProject, setTitle, clear };
+  return { addTask, updateTask, renderProject, renderSearched, setTitle, clear };
 })();
 
 export { taskModal, taskBox };

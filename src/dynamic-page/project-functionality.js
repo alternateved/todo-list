@@ -92,6 +92,7 @@ const projectBox = (() => {
   };
 
   const loadAllTasks = () => {
+    taskBox.clear();
     taskBox.setTitle("All tasks");
     projects.forEach(project => {
       taskBox.renderProject(project);
