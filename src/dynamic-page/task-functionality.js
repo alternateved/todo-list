@@ -197,7 +197,11 @@ const taskBox = (() => {
     leftPanel.appendChild(checkIcon);
     leftPanel.appendChild(titleSpan);
 
-    if (!active) titleSpan.classList.add("strikethrough");
+    if (!active) {
+      titleSpan.classList.add("strikethrough");
+      checkIcon.classList.remove("fa-circle");
+      checkIcon.classList.add("fa-check-circle");
+    }
 
     const rightPanel = createDOM("div", "right-task-panel");
     taskDiv.appendChild(rightPanel);
