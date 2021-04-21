@@ -1,3 +1,4 @@
+// create DOM element with provided tag and all provided classes
 function createDOM(tag, ...classes) {
   const newDOM = document.createElement(tag);
 

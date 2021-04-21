@@ -12,6 +12,9 @@ Implementation of simple todo list from [The Odin Project](https://www.theodinpr
 ### **Side notes**
 * Learned how to use in practice array methods like `filter()`, `find()`, `every()`, `some()`
 * Learned how to use Font Awesome Icons
+* Learned about dates in JavaScript with help of this [article](https://css-tricks.com/everything-you-need-to-know-about-date-in-javascript/)
+* Learned how to use external libraries with webpack and npm
+* Learned how to use `date-fns` library to format, create and sort dates
 * Learned how to better implement changing **theme** of page with use of **custom data attributes**
 * Learned how to investigate localStorage with developer tools in Chrome and Firefox  
 
@@ -26,3 +29,4 @@ Implementation of simple todo list from [The Odin Project](https://www.theodinpr
 ### **Third party code:**
 * [Google Fonts](https://fonts.google.com/)
 * [Font Awesome Icons](https://fontawesome.com/)
+* [date-fns](https://date-fns.org/)

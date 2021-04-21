@@ -8,6 +8,7 @@ import projectBox from "./project-functionality";
 import { format, compareAsc, compareDesc } from "date-fns";
 
 const taskModal = (() => {
+  // display task modal
   const show = (option) => {
     const box = document.querySelector(".task-box");
     modifyModal(option);
@@ -17,12 +18,14 @@ const taskModal = (() => {
     });
   };
 
+  // hide task modal
   const hide = () => {
     const box = document.querySelector(".task-box");
     box.classList.add("hidden");
     reset();
   };
 
+  // depending on option variable, display modal for adding task or for updating task
   const modifyModal = (option) => {
     const taskBoxTitle = document.querySelector(".task-box-title");
     const taskButton = document.querySelector("#add-task-box");
@@ -58,10 +61,10 @@ const taskModal = (() => {
       taskButton.textContent = "Modify task";
       taskButton.onclick = () =>
         taskBox.updateTask(taskInModification, currentProject, currentTaskDiv);
-      //render current data
     }
   };
 
+  // reset task modal form
   const reset = () => {
     let data = [];
     const taskTitle = document.querySelector("#task-title");
@@ -88,6 +91,7 @@ const taskModal = (() => {
 })();
 
 const taskBox = (() => {
+  // add and render new task
   const addTask = () => {
     const taskData = [];
     const taskTitle = document.querySelector("#task-title");
@@ -117,6 +121,7 @@ const taskBox = (() => {
     }
   };
 
+  // update and render updated task
   const updateTask = (targetTask, oldProject, targetNode) => {
     const taskData = [];
     const taskTitle = document.querySelector("#task-title");
@@ -146,6 +151,7 @@ const taskBox = (() => {
     }
   };
 
+  // remove task from page and from storage
   const removeTask = (targetTask) => {
     const targetNode = targetTask.target.parentNode.parentNode;
     const taskTitle = targetNode.querySelector(".task-title").textContent;
@@ -154,6 +160,7 @@ const taskBox = (() => {
     targetNode.remove();
   };
 
+  // mark task completion or undo task completion
   const toggleStrike = (event) => {
     const checkIcon = event.target;
     const taskTitle = checkIcon.parentNode.querySelector(".task-title");
@@ -174,6 +181,7 @@ const taskBox = (() => {
     }
   };
 
+  // render task in task container
   const render = ({ title, dueDate, active }) => {
     const tasksContainer = document.querySelector(".tasks");
     const referenceTask = document.querySelector("#add-task");
@@ -204,22 +212,25 @@ const taskBox = (() => {
     rightPanel.appendChild(trashIcon);
   };
 
+  // render all tasks from provided project and sort it accordingly to chosen option
   const renderProject = (project) => {
     sortOption(project.list);
     project.list.forEach((task) => render(task));
   };
 
+  // render all tasks from provided array and sort it accordingly to chosen option
   const renderCustom = (tasks) => {
     sortOption(tasks);
     tasks.forEach((task) => render(task));
   };
 
+  // set title of task container 
   const setTitle = (title) => {
     const titleDiv = document.querySelector(".tasks-title");
     titleDiv.textContent = title;
   };
 
-  // render task in proper context
+  // render task in proper context depending on task container title
   const loadState = () => {
     const containerTitle = document.querySelector(".tasks-title").textContent;
     switch (containerTitle) {
@@ -248,6 +259,7 @@ const taskBox = (() => {
     }
   };
 
+  // sort provided array depending of the state of due date icon on page 
   const sortOption = (tasks) => {
     if (checkForSort())
       tasks.sort((a, b) =>
@@ -259,10 +271,13 @@ const taskBox = (() => {
       );
   };
 
+  // check what is the state of due date icon on page
   const checkForSort = () => {
     const sortIcon = document.querySelector(".tasks-sort").firstElementChild;
     return sortIcon.classList.contains("fa-sort-up");
   };
+
+  // change due date icon and re-sort task container content
   const toggleSort = () => {
     const sortIcon = document.querySelector(".tasks-sort").firstElementChild;
 
@@ -277,6 +292,7 @@ const taskBox = (() => {
     }
   };
 
+  // clear all rendered tasks from task container
   const clear = () => {
     const tasks = document.querySelectorAll(".task");
     tasks.forEach((task) => task.remove());

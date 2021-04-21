@@ -54,7 +54,9 @@ const taskController = (() => {
       project.list.forEach((task) => {
         if (
           new Date(task.dueDate).getDate() >= dateBeginning.getDate() &&
-          new Date(task.dueDate).getDate() <= dateEnd.getDate()
+          new Date(task.dueDate).getDate() <= dateEnd.getDate() &&
+          new Date(task.dueDate).getFullYear() >= dateBeginning.getFullYear() &&
+          new Date(task.dueDate).getFullYear() <= dateEnd.getFullYear()
         )
           resultArray.push(task);
       })

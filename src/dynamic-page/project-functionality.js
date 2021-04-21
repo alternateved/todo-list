@@ -42,6 +42,7 @@ const projectBox = (() => {
     }
   };
 
+  // erase project from page and from storage 
   const erase = (event) => {
     let projectDiv = event.target.parentNode;
     let projectTitle = event.target.previousSibling.textContent;
@@ -61,7 +62,7 @@ const projectBox = (() => {
     taskBox.loadState();
   };
 
-  // functions for rendering projects in projects container in nav tag
+  // render single project in project container in nav tag
   const render = (title) => {
     const projectsContainer = document.querySelector(".list-projects");
 
@@ -83,16 +84,19 @@ const projectBox = (() => {
     projectSelect.appendChild(projectOption);
   };
 
+  // render all projects in nav tag
   const renderAll = (projects) => {
     projects.forEach((project) => render(project.title));
   };
 
+  // load project by title in task container
   const loadProjectFromTitle = (title) => {
     const targetProject = projectController.locateByProject(title);
     taskBox.clear();
     taskBox.renderProject(targetProject);
   };
 
+  // load project by click event in task container
   const loadProject = (event) => {
     const targetProject = projectController.locateByProject(
       event.target.textContent
@@ -102,6 +106,7 @@ const projectBox = (() => {
     taskBox.renderProject(targetProject);
   };
 
+  // load all tasks in task box for today
   const loadTodayTasks = () => {
     taskBox.clear();
     taskBox.setTitle("Today");
@@ -112,6 +117,7 @@ const projectBox = (() => {
     taskBox.renderCustom(resultOfFilter);
   };
 
+  // load all tasks in task box for this week
   const loadWeekTasks = () => {
     taskBox.clear();
     taskBox.setTitle("Next 7 Days");
@@ -124,6 +130,7 @@ const projectBox = (() => {
     taskBox.renderCustom(resultOfFilter);
   };
 
+  // load all tasks from every project
   const loadAllTasks = () => {
     taskBox.clear();
     taskBox.setTitle("All tasks");
