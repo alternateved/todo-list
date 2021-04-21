@@ -94,6 +94,7 @@ const projectBox = (() => {
   const loadProjectFromTitle = (title) => {
     const targetProject = projectController.locateByProject(title);
     taskBox.clear();
+    taskBox.setTitle(title);
     taskBox.renderProject(targetProject);
   };
 
