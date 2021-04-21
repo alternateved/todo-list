@@ -33,6 +33,7 @@ const storageController = (() => {
       projectController.insert("First project", thirdTask);
       projectController.insert("First project", fourthTask);
       projectBox.renderAll(projects);
+      projectBox.loadAllTasks();
     }
   };
   // check localStorage for data
