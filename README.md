@@ -7,9 +7,21 @@ Implementation of simple todo list from [The Odin Project](https://www.theodinpr
 ![Demo]()
 
 ## **Features**
+* You can **create** or **remove** projects
+* You can **create**, **modify** or **remove** tasks
+* You can **sort** tasks by date ascending and descending in every context
+* You can **complete** or **undo completed** tasks
+* You can **switch between** projects or **move** tasks to other projects
 * You can change page's mode to **dark mode** with toggle on the side
+* You can search for tasks by title or description with **search bar**
+* There are **errors alerts** if no input is provided or if inputted object already exists
+* **Responsive design**: Todo list is functional on desktop and mobile web browsers
+* If there is no initial data, default project and tasks are **generated** taking into account **current date**
+* All projects and tasks are **saved** in `localStorage`
 
 ### **Side notes**
+* Deepened knowledge of DOM manipulation
+* Improved understanding of scope and closures
 * Learned how to use in practice array methods like `filter()`, `find()`, `every()`, `some()`
 * Learned how to use Font Awesome Icons
 * Learned about dates in JavaScript with help of this [article](https://css-tricks.com/everything-you-need-to-know-about-date-in-javascript/)
