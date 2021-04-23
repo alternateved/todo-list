@@ -1,4 +1,4 @@
-import { projects, storageController } from "../object-handlers/storage";
+import { projects, storageController } from '../object-handlers/storage';
 
 const taskController = (() => {
   const create = ([title, description, dueDate, priority]) => {
@@ -14,13 +14,13 @@ const taskController = (() => {
 
   const modify = (todo, attribute, newValue) => {
     todo[attribute] = newValue;
-    storageController.store("projects", projects);
+    storageController.store('projects', projects);
   };
 
   const erase = (project, taskName) => {
     let taskIndex = locateIndex(taskName);
     project.list.splice(taskIndex, 1);
-    storageController.store("projects", projects);
+    storageController.store('projects', projects);
   };
 
   const locate = (targetTask) => {

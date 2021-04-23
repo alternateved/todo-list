@@ -1,35 +1,35 @@
-import projectController from "../object-handlers/project";
-import { projects } from "../object-handlers/storage";
-import { checkForDuplicates, checkForInput } from "../helper-functions/error";
-import createDOM from "../helper-functions/dom";
-import resetValue from "../helper-functions/reset";
-import { taskBox } from "./task-functionality";
-import taskController from "../object-handlers/task";
+import projectController from '../object-handlers/project';
+import { projects } from '../object-handlers/storage';
+import { checkForDuplicates, checkForInput } from '../helper-functions/error';
+import createDOM from '../helper-functions/dom';
+import resetValue from '../helper-functions/reset';
+import { taskBox } from './task-functionality';
+import taskController from '../object-handlers/task';
 
 // module for project functionality in nav tag
 const projectBox = (() => {
   // display box for adding new project
   const show = () => {
-    const box = document.querySelector(".project-box");
-    const addProjectButton = document.querySelector("#add-project");
+    const box = document.querySelector('.project-box');
+    const addProjectButton = document.querySelector('#add-project');
 
-    addProjectButton.classList.add("hidden");
-    box.classList.remove("hidden");
+    addProjectButton.classList.add('hidden');
+    box.classList.remove('hidden');
   };
 
   // hide box for adding new project
   const hide = () => {
-    const box = document.querySelector(".project-box");
-    const addProjectButton = document.querySelector("#add-project");
+    const box = document.querySelector('.project-box');
+    const addProjectButton = document.querySelector('#add-project');
 
-    addProjectButton.classList.remove("hidden");
-    box.classList.add("hidden");
+    addProjectButton.classList.remove('hidden');
+    box.classList.add('hidden');
     reset();
   };
 
   // add new project and render it on page
   const addNew = () => {
-    const userInput = document.querySelector("#project-name");
+    const userInput = document.querySelector('#project-name');
 
     if (
       checkForInput(userInput) &&
@@ -43,19 +43,19 @@ const projectBox = (() => {
     }
   };
 
-  // erase project from page and from storage 
+  // erase project from page and from storage
   const erase = (event) => {
-    let projectDiv = event.target.parentNode;
-    let projectTitle = event.target.previousSibling.textContent;
+    const projectDiv = event.target.parentNode;
+    const projectTitle = event.target.previousSibling.textContent;
 
-    let targetIndex = projects.findIndex(
+    const targetIndex = projects.findIndex(
       (project) => project.title === projectTitle
     );
     projectController.erase(targetIndex);
     projectDiv.remove();
 
     const projectSelectOptions = document.querySelectorAll(
-      "#task-projects > option"
+      '#task-projects > option'
     );
     projectSelectOptions.forEach((option) => {
       if (option.textContent === projectTitle) option.remove();
@@ -65,22 +65,22 @@ const projectBox = (() => {
 
   // render single project in project container in nav tag
   const render = (title) => {
-    const projectsContainer = document.querySelector(".list-projects");
+    const projectsContainer = document.querySelector('.list-projects');
 
-    const elementDiv = createDOM("div", "list-element");
+    const elementDiv = createDOM('div', 'list-element');
     projectsContainer.appendChild(elementDiv);
 
-    const titleSpan = createDOM("span", "element-title");
+    const titleSpan = createDOM('span', 'element-title');
     titleSpan.textContent = title;
     elementDiv.appendChild(titleSpan);
-    titleSpan.addEventListener("click", loadProject);
-    const iconSpan = createDOM("span", "fas", "fa-trash");
-    iconSpan.addEventListener("click", erase);
+    titleSpan.addEventListener('click', loadProject);
+    const iconSpan = createDOM('span', 'fas', 'fa-trash');
+    iconSpan.addEventListener('click', erase);
     elementDiv.appendChild(iconSpan);
 
     // update list of projects in task modal
-    const projectSelect = document.querySelector("#task-projects");
-    const projectOption = createDOM("option");
+    const projectSelect = document.querySelector('#task-projects');
+    const projectOption = createDOM('option');
     projectOption.textContent = title;
     projectSelect.appendChild(projectOption);
   };
@@ -111,7 +111,7 @@ const projectBox = (() => {
   // load all tasks in task box for today
   const loadTodayTasks = () => {
     taskBox.clear();
-    taskBox.setTitle("Today");
+    taskBox.setTitle('Today');
 
     const todayDate = new Date();
 
@@ -122,7 +122,7 @@ const projectBox = (() => {
   // load all tasks in task box for this week
   const loadWeekTasks = () => {
     taskBox.clear();
-    taskBox.setTitle("Next 7 Days");
+    taskBox.setTitle('Next 7 Days');
 
     const todayDate = new Date();
     const weekDate = new Date(todayDate);
@@ -135,16 +135,16 @@ const projectBox = (() => {
   // load all tasks from every project
   const loadAllTasks = () => {
     taskBox.clear();
-    taskBox.setTitle("All tasks");
+    taskBox.setTitle('All tasks');
     projects.forEach((project) => {
       taskBox.renderProject(project);
     });
   };
 
   const reset = () => {
-    const userInput = document.querySelector("#project-name");
+    const userInput = document.querySelector('#project-name');
     resetValue(userInput);
-  }
+  };
 
   return {
     show,

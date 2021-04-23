@@ -1,6 +1,6 @@
 // reset provided DOM element value
 function resetValue(input) {
-  input.value = "";
+  input.value = '';
 }
 
 export default resetValue;

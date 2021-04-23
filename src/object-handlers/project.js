@@ -1,4 +1,4 @@
-import { projects, storageController } from "./storage";
+import { projects, storageController } from './storage';
 
 const projectController = (() => {
   const create = (title) => {
@@ -7,17 +7,17 @@ const projectController = (() => {
       list: [],
     };
     projects.push(project);
-    storageController.store("projects", projects);
+    storageController.store('projects', projects);
   };
 
   const insert = (targetProject, task) => {
     locateByProject(targetProject).list.push(task);
-    storageController.store("projects", projects);
+    storageController.store('projects', projects);
   };
 
   const erase = (index) => {
     projects.splice(index, 1);
-    storageController.store("projects", projects);
+    storageController.store('projects', projects);
   };
 
   const locateByTask = (targetTask) => {

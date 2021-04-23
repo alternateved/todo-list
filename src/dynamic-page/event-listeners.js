@@ -1,48 +1,48 @@
-import projectBox from "./project-functionality";
-import { taskModal, taskBox } from "./task-functionality";
-import { toggleTheme } from "./theme";
-import searchTerm from "./search";
+import projectBox from './project-functionality';
+import { taskModal, taskBox } from './task-functionality';
+import { toggleTheme } from './theme';
+import searchTerm from './search';
 
 function startListening() {
-  const searchButton = document.querySelector(".search-button");
-  searchButton.addEventListener("click", searchTerm);
+  const searchButton = document.querySelector('.search-button');
+  searchButton.addEventListener('click', searchTerm);
 
-  const searchBox = document.querySelector(".search-term");
-  searchBox.addEventListener("keyup", (event) => {
+  const searchBox = document.querySelector('.search-term');
+  searchBox.addEventListener('keyup', (event) => {
     if (event.keyCode === 13) searchButton.click();
   });
 
-  const addProjectButton = document.querySelector("#add-project");
-  addProjectButton.addEventListener("click", projectBox.show);
+  const addProjectButton = document.querySelector('#add-project');
+  addProjectButton.addEventListener('click', projectBox.show);
 
-  const projectName = document.querySelector("#project-name");
-  projectName.addEventListener("keyup", (event) => {
+  const cancelButton = document.querySelector('#cancel-project-box');
+  cancelButton.addEventListener('click', projectBox.hide);
+
+  const addButton = document.querySelector('#add-project-box');
+  addButton.addEventListener('click', projectBox.addNew);
+
+  const projectName = document.querySelector('#project-name');
+  projectName.addEventListener('keyup', (event) => {
     if (event.keyCode === 13) addButton.click();
   });
 
-  const cancelButton = document.querySelector("#cancel-project-box");
-  cancelButton.addEventListener("click", projectBox.hide);
+  const addTaskButton = document.querySelector('#add-task');
+  addTaskButton.addEventListener('click', () => taskModal.show('New Task'));
 
-  const addButton = document.querySelector("#add-project-box");
-  addButton.addEventListener("click", projectBox.addNew);
+  const themeButton = document.querySelector('#theme-switcher');
+  themeButton.addEventListener('click', toggleTheme);
 
-  const addTaskButton = document.querySelector("#add-task");
-  addTaskButton.addEventListener("click", () => taskModal.show("New Task"));
+  const todayButton = document.querySelector('#today-shortcut');
+  todayButton.addEventListener('click', projectBox.loadTodayTasks);
 
-  const themeButton = document.querySelector("#theme-switcher");
-  themeButton.addEventListener("click", toggleTheme);
+  const weekButton = document.querySelector('#week-shortcut');
+  weekButton.addEventListener('click', projectBox.loadWeekTasks);
 
-  const todayButton = document.querySelector("#today-shortcut");
-  todayButton.addEventListener("click", projectBox.loadTodayTasks);
+  const allTaskButton = document.querySelector('#all-tasks-shortcut');
+  allTaskButton.addEventListener('click', projectBox.loadAllTasks);
 
-  const weekButton = document.querySelector("#week-shortcut");
-  weekButton.addEventListener("click", projectBox.loadWeekTasks);
-
-  const allTaskButton = document.querySelector("#all-tasks-shortcut");
-  allTaskButton.addEventListener("click", projectBox.loadAllTasks);
-
-  const sortDiv = document.querySelector(".tasks-sort");
-  sortDiv.addEventListener("click", taskBox.toggleSort);
+  const sortDiv = document.querySelector('.tasks-sort');
+  sortDiv.addEventListener('click', taskBox.toggleSort);
 }
 
 export default startListening;
