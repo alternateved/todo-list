@@ -14,7 +14,6 @@ const projectController = (() => {
     locateByProject(targetProject).list.push(task);
     storageController.store('projects', projects);
   };
-
   const erase = (index) => {
     projects.splice(index, 1);
     storageController.store('projects', projects);
