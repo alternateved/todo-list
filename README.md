@@ -33,7 +33,7 @@ Implementation of simple todo list from [The Odin Project](https://www.theodinpr
 - learned a lot about ESLint, Prettier and Airbnb JavaScript Style Guide
 - learned how to investigate localStorage with developer tools in Chrome and Firefox
 
-### **Tools:**
+### **Tools**
 
 - Visual Studio Code
 - Linux terminal
@@ -42,7 +42,7 @@ Implementation of simple todo list from [The Odin Project](https://www.theodinpr
 - Git and GitHub
 - ESLint + Prettier + Airbnb JavaScript Style Guide
 
-### **Third party code:**
+### **Third party code**
 
 - [Google Fonts](https://fonts.google.com/)
 - [Font Awesome Icons](https://fontawesome.com/)
